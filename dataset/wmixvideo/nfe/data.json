@@ -1,0 +1,729 @@
+[
+  {
+    "name": "com.fincatto.documentofiscal.DFUnidadeFederativaTest.deveRepresentarOCodigoCorretamente()",
+    "bSource": {
+      "startLine": 8,
+      "code": "@Test\n    public void deveRepresentarOCodigoCorretamente() {\n    \t\n        Assert.assertEquals(\"AC\", DFUnidadeFederativa.AC.getCodigo());\n        Assert.assertEquals(\"12\", DFUnidadeFederativa.AC.getCodigoIbge());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeProducao());\n\n        Assert.assertEquals(\"AL\", DFUnidadeFederativa.AL.getCodigo());\n        Assert.assertEquals(\"27\", DFUnidadeFederativa.AL.getCodigoIbge());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeProducao());\n\n\n        Assert.assertEquals(\"AM\", DFUnidadeFederativa.AM.getCodigo());\n        Assert.assertEquals(\"13\", DFUnidadeFederativa.AM.getCodigoIbge());\n        Assert.assertEquals(\"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeProducao());\n\n        Assert.assertEquals(\"AP\", DFUnidadeFederativa.AP.getCodigo());\n        Assert.assertEquals(\"16\", DFUnidadeFederativa.AP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\", DFUnidadeFederativa.AP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfce/nfce.php\", DFUnidadeFederativa.AP.getQrCodeProducao());\n\n        Assert.assertEquals(\"BA\", DFUnidadeFederativa.BA.getCodigo());\n        Assert.assertEquals(\"29\", DFUnidadeFederativa.BA.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeProducao());\n\n        Assert.assertEquals(\"CE\", DFUnidadeFederativa.CE.getCodigo());\n        Assert.assertEquals(\"23\", DFUnidadeFederativa.CE.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeProducao());\n\n        Assert.assertEquals(\"DF\", DFUnidadeFederativa.DF.getCodigo());\n        Assert.assertEquals(\"53\", DFUnidadeFederativa.DF.getCodigoIbge());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeProducao());\n\n        Assert.assertEquals(\"ES\", DFUnidadeFederativa.ES.getCodigo());\n        Assert.assertEquals(\"32\", DFUnidadeFederativa.ES.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeProducao());\n\n        Assert.assertEquals(\"GO\", DFUnidadeFederativa.GO.getCodigo());\n        Assert.assertEquals(\"52\", DFUnidadeFederativa.GO.getCodigoIbge());\n        Assert.assertEquals(\"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeProducao());\n\n        Assert.assertEquals(\"MA\", DFUnidadeFederativa.MA.getCodigo());\n        Assert.assertEquals(\"21\", DFUnidadeFederativa.MA.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeProducao());\n\n        Assert.assertEquals(\"MG\", DFUnidadeFederativa.MG.getCodigo());\n        Assert.assertEquals(\"31\", DFUnidadeFederativa.MG.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao());\n        Assert.assertEquals(\"http://nfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeProducao());\n\n        Assert.assertEquals(\"MS\", DFUnidadeFederativa.MS.getCodigo());\n        Assert.assertEquals(\"50\", DFUnidadeFederativa.MS.getCodigoIbge());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeProducao());\n\n        Assert.assertEquals(\"MT\", DFUnidadeFederativa.MT.getCodigo());\n        Assert.assertEquals(\"51\", DFUnidadeFederativa.MT.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeProducao());\n\n        Assert.assertEquals(\"PA\", DFUnidadeFederativa.PA.getCodigo());\n        Assert.assertEquals(\"15\", DFUnidadeFederativa.PA.getCodigoIbge());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeProducao());\n\n        Assert.assertEquals(\"PB\", DFUnidadeFederativa.PB.getCodigo());\n        Assert.assertEquals(\"25\", DFUnidadeFederativa.PB.getCodigoIbge());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfcehom\", DFUnidadeFederativa.PB.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfce\", DFUnidadeFederativa.PB.getQrCodeProducao());\n\n        Assert.assertEquals(\"PE\", DFUnidadeFederativa.PE.getCodigo());\n        Assert.assertEquals(\"26\", DFUnidadeFederativa.PE.getCodigoIbge());\n        Assert.assertEquals(\"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeProducao());\n\n        Assert.assertEquals(\"PI\", DFUnidadeFederativa.PI.getCodigo());\n        Assert.assertEquals(\"22\", DFUnidadeFederativa.PI.getCodigoIbge());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeProducao());\n\n        Assert.assertEquals(\"PR\", DFUnidadeFederativa.PR.getCodigo());\n        Assert.assertEquals(\"41\", DFUnidadeFederativa.PR.getCodigoIbge());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RJ\", DFUnidadeFederativa.RJ.getCodigo());\n        Assert.assertEquals(\"33\", DFUnidadeFederativa.RJ.getCodigoIbge());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeProducao());\n\n        Assert.assertEquals(\"RN\", DFUnidadeFederativa.RN.getCodigo());\n        Assert.assertEquals(\"24\", DFUnidadeFederativa.RN.getCodigoIbge());\n        Assert.assertEquals(\"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeProducao());\n\n        Assert.assertEquals(\"RO\", DFUnidadeFederativa.RO.getCodigo());\n        Assert.assertEquals(\"11\", DFUnidadeFederativa.RO.getCodigoIbge());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeProducao());\n\n        Assert.assertEquals(\"RR\", DFUnidadeFederativa.RR.getCodigo());\n        Assert.assertEquals(\"14\", DFUnidadeFederativa.RR.getCodigoIbge());\n        Assert.assertEquals(\"http://200.174.88.103:8080/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RS\", DFUnidadeFederativa.RS.getCodigo());\n        Assert.assertEquals(\"43\", DFUnidadeFederativa.RS.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeProducao());\n\n        Assert.assertEquals(\"SC\", DFUnidadeFederativa.SC.getCodigo());\n        Assert.assertEquals(\"42\", DFUnidadeFederativa.SC.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeProducao());\n\n        Assert.assertEquals(\"SE\", DFUnidadeFederativa.SE.getCodigo());\n        Assert.assertEquals(\"28\", DFUnidadeFederativa.SE.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeProducao());\n\n        Assert.assertEquals(\"SP\", DFUnidadeFederativa.SP.getCodigo());\n        Assert.assertEquals(\"35\", DFUnidadeFederativa.SP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeProducao());\n\n        Assert.assertEquals(\"TO\", DFUnidadeFederativa.TO.getCodigo());\n        Assert.assertEquals(\"17\", DFUnidadeFederativa.TO.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeProducao());\n\n        Assert.assertEquals(\"NC\", DFUnidadeFederativa.NACIONAL.getCodigo());\n        Assert.assertEquals(\"90\", DFUnidadeFederativa.NACIONAL.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeProducao());\n\n        Assert.assertEquals(\"RFB\", DFUnidadeFederativa.RFB.getCodigo());\n        Assert.assertEquals(\"91\", DFUnidadeFederativa.RFB.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeProducao());\n\n        Assert.assertEquals(\"EX\", DFUnidadeFederativa.EX.getCodigo());\n        Assert.assertEquals(\"99\", DFUnidadeFederativa.EX.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeProducao());\n    }"
+    },
+    "aSource": {
+      "startLine": 8,
+      "code": "@Test\n    public void deveRepresentarOCodigoCorretamente() {\n    \t\n        Assert.assertEquals(\"AC\", DFUnidadeFederativa.AC.getCodigo());\n        Assert.assertEquals(\"12\", DFUnidadeFederativa.AC.getCodigoIbge());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeProducao());\n\n        Assert.assertEquals(\"AL\", DFUnidadeFederativa.AL.getCodigo());\n        Assert.assertEquals(\"27\", DFUnidadeFederativa.AL.getCodigoIbge());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeProducao());\n\n\n        Assert.assertEquals(\"AM\", DFUnidadeFederativa.AM.getCodigo());\n        Assert.assertEquals(\"13\", DFUnidadeFederativa.AM.getCodigoIbge());\n        Assert.assertEquals(\"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeProducao());\n\n        Assert.assertEquals(\"AP\", DFUnidadeFederativa.AP.getCodigo());\n        Assert.assertEquals(\"16\", DFUnidadeFederativa.AP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\", DFUnidadeFederativa.AP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfce/nfce.php\", DFUnidadeFederativa.AP.getQrCodeProducao());\n\n        Assert.assertEquals(\"BA\", DFUnidadeFederativa.BA.getCodigo());\n        Assert.assertEquals(\"29\", DFUnidadeFederativa.BA.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeProducao());\n\n        Assert.assertEquals(\"CE\", DFUnidadeFederativa.CE.getCodigo());\n        Assert.assertEquals(\"23\", DFUnidadeFederativa.CE.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeProducao());\n\n        Assert.assertEquals(\"DF\", DFUnidadeFederativa.DF.getCodigo());\n        Assert.assertEquals(\"53\", DFUnidadeFederativa.DF.getCodigoIbge());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeProducao());\n\n        Assert.assertEquals(\"ES\", DFUnidadeFederativa.ES.getCodigo());\n        Assert.assertEquals(\"32\", DFUnidadeFederativa.ES.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeProducao());\n\n        Assert.assertEquals(\"GO\", DFUnidadeFederativa.GO.getCodigo());\n        Assert.assertEquals(\"52\", DFUnidadeFederativa.GO.getCodigoIbge());\n        Assert.assertEquals(\"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeProducao());\n\n        Assert.assertEquals(\"MA\", DFUnidadeFederativa.MA.getCodigo());\n        Assert.assertEquals(\"21\", DFUnidadeFederativa.MA.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeProducao());\n\n        Assert.assertEquals(\"MG\", DFUnidadeFederativa.MG.getCodigo());\n        Assert.assertEquals(\"31\", DFUnidadeFederativa.MG.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao());\n        Assert.assertEquals(\"http://nfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeProducao());\n\n        Assert.assertEquals(\"MS\", DFUnidadeFederativa.MS.getCodigo());\n        Assert.assertEquals(\"50\", DFUnidadeFederativa.MS.getCodigoIbge());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeProducao());\n\n        Assert.assertEquals(\"MT\", DFUnidadeFederativa.MT.getCodigo());\n        Assert.assertEquals(\"51\", DFUnidadeFederativa.MT.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeProducao());\n\n        Assert.assertEquals(\"PA\", DFUnidadeFederativa.PA.getCodigo());\n        Assert.assertEquals(\"15\", DFUnidadeFederativa.PA.getCodigoIbge());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeProducao());\n\n        Assert.assertEquals(\"PB\", DFUnidadeFederativa.PB.getCodigo());\n        Assert.assertEquals(\"25\", DFUnidadeFederativa.PB.getCodigoIbge());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfcehom\", DFUnidadeFederativa.PB.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfce\", DFUnidadeFederativa.PB.getQrCodeProducao());\n\n        Assert.assertEquals(\"PE\", DFUnidadeFederativa.PE.getCodigo());\n        Assert.assertEquals(\"26\", DFUnidadeFederativa.PE.getCodigoIbge());\n        Assert.assertEquals(\"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeProducao());\n\n        Assert.assertEquals(\"PI\", DFUnidadeFederativa.PI.getCodigo());\n        Assert.assertEquals(\"22\", DFUnidadeFederativa.PI.getCodigoIbge());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeProducao());\n\n        Assert.assertEquals(\"PR\", DFUnidadeFederativa.PR.getCodigo());\n        Assert.assertEquals(\"41\", DFUnidadeFederativa.PR.getCodigoIbge());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RJ\", DFUnidadeFederativa.RJ.getCodigo());\n        Assert.assertEquals(\"33\", DFUnidadeFederativa.RJ.getCodigoIbge());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeProducao());\n\n        Assert.assertEquals(\"RN\", DFUnidadeFederativa.RN.getCodigo());\n        Assert.assertEquals(\"24\", DFUnidadeFederativa.RN.getCodigoIbge());\n        Assert.assertEquals(\"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeProducao());\n\n        Assert.assertEquals(\"RO\", DFUnidadeFederativa.RO.getCodigo());\n        Assert.assertEquals(\"11\", DFUnidadeFederativa.RO.getCodigoIbge());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeProducao());\n\n        Assert.assertEquals(\"RR\", DFUnidadeFederativa.RR.getCodigo());\n        Assert.assertEquals(\"14\", DFUnidadeFederativa.RR.getCodigoIbge());\n        Assert.assertEquals(\"http://200.174.88.103:8080/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RS\", DFUnidadeFederativa.RS.getCodigo());\n        Assert.assertEquals(\"43\", DFUnidadeFederativa.RS.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeProducao());\n\n        Assert.assertEquals(\"SC\", DFUnidadeFederativa.SC.getCodigo());\n        Assert.assertEquals(\"42\", DFUnidadeFederativa.SC.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeProducao());\n\n        Assert.assertEquals(\"SE\", DFUnidadeFederativa.SE.getCodigo());\n        Assert.assertEquals(\"28\", DFUnidadeFederativa.SE.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeProducao());\n\n        Assert.assertEquals(\"SP\", DFUnidadeFederativa.SP.getCodigo());\n        Assert.assertEquals(\"35\", DFUnidadeFederativa.SP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeProducao());\n\n        Assert.assertEquals(\"TO\", DFUnidadeFederativa.TO.getCodigo());\n        Assert.assertEquals(\"17\", DFUnidadeFederativa.TO.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.to.gov.br/nfce/qrcode\", DFUnidadeFederativa.TO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.to.gov.br/nfce/qrcode\", DFUnidadeFederativa.TO.getQrCodeProducao());\n\n        Assert.assertEquals(\"NC\", DFUnidadeFederativa.NACIONAL.getCodigo());\n        Assert.assertEquals(\"90\", DFUnidadeFederativa.NACIONAL.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeProducao());\n\n        Assert.assertEquals(\"RFB\", DFUnidadeFederativa.RFB.getCodigo());\n        Assert.assertEquals(\"91\", DFUnidadeFederativa.RFB.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeProducao());\n\n        Assert.assertEquals(\"EX\", DFUnidadeFederativa.EX.getCodigo());\n        Assert.assertEquals(\"99\", DFUnidadeFederativa.EX.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeProducao());\n    }"
+    },
+    "bPath": "src/test/java/com/fincatto/documentofiscal/DFUnidadeFederativaTest.java",
+    "aPath": "src/test/java/com/fincatto/documentofiscal/DFUnidadeFederativaTest.java",
+    "bCommit": "d1eb7072",
+    "aCommit": "b0734fab",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeHomologacao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 146
+          },
+          {
+            "line": "Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeProducao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 147
+          }
+        ],
+        "targetChanges": [
+          {
+            "line": "Assert.assertEquals ( \"http://homologacao.sefaz.to.gov.br/nfce/qrcode\" , DFUnidadeFederativa.TO.getQrCodeHomologacao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 146
+          },
+          {
+            "line": "Assert.assertEquals ( \"http://www.sefaz.to.gov.br/nfce/qrcode\" , DFUnidadeFederativa.TO.getQrCodeProducao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 147
+          }
+        ],
+        "type": "MODIFY",
+        "sourceElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertNull(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertNull(java.lang.String)"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+          },
+          {
+            "type": "CtFieldReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertNull(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertNull(java.lang.String)"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeProducao()"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+          },
+          {
+            "type": "CtFieldReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeProducao()"
+          }
+        ],
+        "targetElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String,java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String,java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://homologacao.sefaz.to.gov.br/nfce/qrcode'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+          },
+          {
+            "type": "CtFieldReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String,java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String,java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://www.sefaz.to.gov.br/nfce/qrcode'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeProducao()"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+          },
+          {
+            "type": "CtFieldReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa TO"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.fincatto.documentofiscal.DFUnidadeFederativa.getQrCodeProducao()"
+          }
+        ]
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "failure",
+      "error_lines": [
+        146
+      ]
+    },
+    "repair_type": "test failure fix",
+    "coverage_repair_stats": "coverage_fix",
+    "mutation_repair_stats": "mutation_fix",
+    "coverage_loss": false,
+    "mutation_loss": false,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": null,
+      "repaired_line_coverage": 1.0,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": null,
+      "repaired_branch_coverage": null,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": null,
+      "repaired_mutation_coverage": 1.0
+    },
+    "focal_method": {
+      "focal_class_name": "com.fincatto.documentofiscal.DFUnidadeFederativa",
+      "focal_method_name": "getCodigoIbge",
+      "a_focal_method_code": {
+        "startLine": 70,
+        "endLine": 72,
+        "code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "fullName": "com.fincatto.documentofiscal.DFUnidadeFederativa.getCodigoIbge()",
+        "simpleName": "getCodigoIbge",
+        "className": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+      },
+      "b_focal_method_code": {
+        "startLine": 70,
+        "endLine": 72,
+        "code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "fullName": "com.fincatto.documentofiscal.DFUnidadeFederativa.getCodigoIbge()",
+        "simpleName": "getCodigoIbge",
+        "className": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+      },
+      "a_focal_method_path": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+      "b_focal_method_path": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+      "aCommit": "b0734fab",
+      "bCommit": "d1eb7072",
+      "a_commit_path": "../../output/wmixvideo/nfe/codeMining/commits/b0734fab-0",
+      "b_commit_path": "../../output/wmixvideo/nfe/codeMining/commits/d1eb7072-b0734fab",
+      "line_mapping": [
+        {
+          "b_line": 70,
+          "a_line": 70,
+          "content": "public String getCodigoIbge() {"
+        },
+        {
+          "b_line": 71,
+          "a_line": 71,
+          "content": "        return this.codigoIbge;"
+        },
+        {
+          "b_line": 72,
+          "a_line": 72,
+          "content": "    }"
+        }
+      ],
+      "deleted_lines": [],
+      "added_lines": []
+    },
+    "aCommitTime": 1564748257,
+    "ID": "wmixvideo/nfe:3",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "wmixvideo/nfe",
+    "input": {
+      "test_code": "@Test public void deveRepresentarOCodigoCorretamente ( ) { Assert.assertEquals ( \"AC\" , DFUnidadeFederativa.AC.getCodigo ( ) ) ; Assert.assertEquals ( \"12\" , DFUnidadeFederativa.AC.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hml.sefaznet.ac.gov.br/nfce/qrcode\" , DFUnidadeFederativa.AC.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://hml.sefaznet.ac.gov.br/nfce/qrcode\" , DFUnidadeFederativa.AC.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AL\" , DFUnidadeFederativa.AL.getCodigo ( ) ) ; Assert.assertEquals ( \"27\" , DFUnidadeFederativa.AL.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , DFUnidadeFederativa.AL.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , DFUnidadeFederativa.AL.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AM\" , DFUnidadeFederativa.AM.getCodigo ( ) ) ; Assert.assertEquals ( \"13\" , DFUnidadeFederativa.AM.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\" , DFUnidadeFederativa.AM.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\" , DFUnidadeFederativa.AM.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AP\" , DFUnidadeFederativa.AP.getCodigo ( ) ) ; Assert.assertEquals ( \"16\" , DFUnidadeFederativa.AP.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\" , DFUnidadeFederativa.AP.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.ap.gov.br/nfce/nfce.php\" , DFUnidadeFederativa.AP.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"BA\" , DFUnidadeFederativa.BA.getCodigo ( ) ) ; Assert.assertEquals ( \"29\" , DFUnidadeFederativa.BA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\" , DFUnidadeFederativa.BA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\" , DFUnidadeFederativa.BA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"CE\" , DFUnidadeFederativa.CE.getCodigo ( ) ) ; Assert.assertEquals ( \"23\" , DFUnidadeFederativa.CE.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.CE.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.CE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"DF\" , DFUnidadeFederativa.DF.getCodigo ( ) ) ; Assert.assertEquals ( \"53\" , DFUnidadeFederativa.DF.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\" , DFUnidadeFederativa.DF.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\" , DFUnidadeFederativa.DF.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"ES\" , DFUnidadeFederativa.ES.getCodigo ( ) ) ; Assert.assertEquals ( \"32\" , DFUnidadeFederativa.ES.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\" , DFUnidadeFederativa.ES.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\" , DFUnidadeFederativa.ES.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"GO\" , DFUnidadeFederativa.GO.getCodigo ( ) ) ; Assert.assertEquals ( \"52\" , DFUnidadeFederativa.GO.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\" , DFUnidadeFederativa.GO.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\" , DFUnidadeFederativa.GO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MA\" , DFUnidadeFederativa.MA.getCodigo ( ) ) ; Assert.assertEquals ( \"21\" , DFUnidadeFederativa.MA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.MA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.MA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MG\" , DFUnidadeFederativa.MG.getCodigo ( ) ) ; Assert.assertEquals ( \"31\" , DFUnidadeFederativa.MG.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hnfce.fazenda.mg.gov.br/portalnfce\" , DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.fazenda.mg.gov.br/portalnfce\" , DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao ( ) ) ; Assert.assertEquals ( \"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\" , DFUnidadeFederativa.MG.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\" , DFUnidadeFederativa.MG.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MS\" , DFUnidadeFederativa.MS.getCodigo ( ) ) ; Assert.assertEquals ( \"50\" , DFUnidadeFederativa.MS.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.dfe.ms.gov.br/nfce/qrcode\" , DFUnidadeFederativa.MS.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.dfe.ms.gov.br/nfce/qrcode\" , DFUnidadeFederativa.MS.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MT\" , DFUnidadeFederativa.MT.getCodigo ( ) ) ; Assert.assertEquals ( \"51\" , DFUnidadeFederativa.MT.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\" , DFUnidadeFederativa.MT.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.mt.gov.br/nfce/consultanfce\" , DFUnidadeFederativa.MT.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PA\" , DFUnidadeFederativa.PA.getCodigo ( ) ) ; Assert.assertEquals ( \"15\" , DFUnidadeFederativa.PA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\" , DFUnidadeFederativa.PA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\" , DFUnidadeFederativa.PA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PB\" , DFUnidadeFederativa.PB.getCodigo ( ) ) ; Assert.assertEquals ( \"25\" , DFUnidadeFederativa.PB.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.receita.pb.gov.br/nfcehom\" , DFUnidadeFederativa.PB.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.receita.pb.gov.br/nfce\" , DFUnidadeFederativa.PB.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PE\" , DFUnidadeFederativa.PE.getCodigo ( ) ) ; Assert.assertEquals ( \"26\" , DFUnidadeFederativa.PE.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\" , DFUnidadeFederativa.PE.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\" , DFUnidadeFederativa.PE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PI\" , DFUnidadeFederativa.PI.getCodigo ( ) ) ; Assert.assertEquals ( \"22\" , DFUnidadeFederativa.PI.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.pi.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PI.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.pi.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PI.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PR\" , DFUnidadeFederativa.PR.getCodigo ( ) ) ; Assert.assertEquals ( \"41\" , DFUnidadeFederativa.PR.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.pr.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PR.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.pr.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PR.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RJ\" , DFUnidadeFederativa.RJ.getCodigo ( ) ) ; Assert.assertEquals ( \"33\" , DFUnidadeFederativa.RJ.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , DFUnidadeFederativa.RJ.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , DFUnidadeFederativa.RJ.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RN\" , DFUnidadeFederativa.RN.getCodigo ( ) ) ; Assert.assertEquals ( \"24\" , DFUnidadeFederativa.RN.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\" , DFUnidadeFederativa.RN.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.set.rn.gov.br/consultarNFCe.aspx\" , DFUnidadeFederativa.RN.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RO\" , DFUnidadeFederativa.RO.getCodigo ( ) ) ; Assert.assertEquals ( \"11\" , DFUnidadeFederativa.RO.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\" , DFUnidadeFederativa.RO.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\" , DFUnidadeFederativa.RO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RR\" , DFUnidadeFederativa.RR.getCodigo ( ) ) ; Assert.assertEquals ( \"14\" , DFUnidadeFederativa.RR.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://200.174.88.103:8080/nfce/servlet/qrcode\" , DFUnidadeFederativa.RR.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\" , DFUnidadeFederativa.RR.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RS\" , DFUnidadeFederativa.RS.getCodigo ( ) ) ; Assert.assertEquals ( \"43\" , DFUnidadeFederativa.RS.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\" , DFUnidadeFederativa.RS.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\" , DFUnidadeFederativa.RS.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SC\" , DFUnidadeFederativa.SC.getCodigo ( ) ) ; Assert.assertEquals ( \"42\" , DFUnidadeFederativa.SC.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.SC.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.SC.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SE\" , DFUnidadeFederativa.SE.getCodigo ( ) ) ; Assert.assertEquals ( \"28\" , DFUnidadeFederativa.SE.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.SE.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.SE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SP\" , DFUnidadeFederativa.SP.getCodigo ( ) ) ; Assert.assertEquals ( \"35\" , DFUnidadeFederativa.SP.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\" , DFUnidadeFederativa.SP.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\" , DFUnidadeFederativa.SP.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"TO\" , DFUnidadeFederativa.TO.getCodigo ( ) ) ; Assert.assertEquals ( \"17\" , DFUnidadeFederativa.TO.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"NC\" , DFUnidadeFederativa.NACIONAL.getCodigo ( ) ) ; Assert.assertEquals ( \"90\" , DFUnidadeFederativa.NACIONAL.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.NACIONAL.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RFB\" , DFUnidadeFederativa.RFB.getCodigo ( ) ) ; Assert.assertEquals ( \"91\" , DFUnidadeFederativa.RFB.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.RFB.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.RFB.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"EX\" , DFUnidadeFederativa.EX.getCodigo ( ) ) ; Assert.assertEquals ( \"99\" , DFUnidadeFederativa.EX.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.EX.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.EX.getQrCodeProducao ( ) ) ; }",
+      "test_name": "com.fincatto.documentofiscal.DFUnidadeFederativaTest.deveRepresentarOCodigoCorretamente()",
+      "project": "wmixvideo/nfe",
+      "test_method": [],
+      "focal_method": [],
+      "focal_file": [
+        {
+          "diff": "[DELETE] TO ( \"TO\" , \"Tocantins\" , \"17\" , null , null , \"http://homologacao.sefaz.to.gov.br/nfce/consulta.jsf\" , \"http://www.sefaz.to.gov.br/nfce/consulta.jsf\" ) , [ADD] TO ( \"TO\" , \"Tocantins\" , \"17\" , \"http://homologacao.sefaz.to.gov.br/nfce/qrcode\" , \"http://www.sefaz.to.gov.br/nfce/qrcode\" , \"http://homologacao.sefaz.to.gov.br/nfce/consulta.jsf\" , \"http://www.sefaz.to.gov.br/nfce/consulta.jsf\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        }
+      ],
+      "high_frequency": [],
+      "all_diffs": [
+        {
+          "diff": "[DELETE] TO ( \"TO\" , \"Tocantins\" , \"17\" , null , null , \"http://homologacao.sefaz.to.gov.br/nfce/consulta.jsf\" , \"http://www.sefaz.to.gov.br/nfce/consulta.jsf\" ) , [ADD] TO ( \"TO\" , \"Tocantins\" , \"17\" , \"http://homologacao.sefaz.to.gov.br/nfce/qrcode\" , \"http://www.sefaz.to.gov.br/nfce/qrcode\" , \"http://homologacao.sefaz.to.gov.br/nfce/consulta.jsf\" , \"http://www.sefaz.to.gov.br/nfce/consulta.jsf\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 1,
+        "after_whitespace_filter": 1,
+        "matched_diffs": 1,
+        "test_method_count": 0,
+        "focal_file_count": 1,
+        "focal_method_count": 0,
+        "high_frequency_count": 0
+      },
+      "focal_method_info": {
+        "focal_method_changed": false,
+        "b_focal_method_code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "a_focal_method_code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }"
+      },
+      "test_import": [
+        "import org.junit.Assert;",
+        "import org.junit.Test;"
+      ],
+      "class_fields": [],
+      "non_test_methods": [],
+      "prioritized_changes": []
+    }
+  },
+  {
+    "name": "com.fincatto.documentofiscal.DFUnidadeFederativaTest.deveRepresentarOCodigoCorretamente()",
+    "bSource": {
+      "startLine": 8,
+      "code": "@Test\n    public void deveRepresentarOCodigoCorretamente() {\n    \t\n        Assert.assertEquals(\"AC\", DFUnidadeFederativa.AC.getCodigo());\n        Assert.assertEquals(\"12\", DFUnidadeFederativa.AC.getCodigoIbge());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeProducao());\n\n        Assert.assertEquals(\"AL\", DFUnidadeFederativa.AL.getCodigo());\n        Assert.assertEquals(\"27\", DFUnidadeFederativa.AL.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.AL.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.AL.getQrCodeProducao());\n\n\n        Assert.assertEquals(\"AM\", DFUnidadeFederativa.AM.getCodigo());\n        Assert.assertEquals(\"13\", DFUnidadeFederativa.AM.getCodigoIbge());\n        Assert.assertEquals(\"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeProducao());\n\n        Assert.assertEquals(\"AP\", DFUnidadeFederativa.AP.getCodigo());\n        Assert.assertEquals(\"16\", DFUnidadeFederativa.AP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\", DFUnidadeFederativa.AP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfce/nfce.php\", DFUnidadeFederativa.AP.getQrCodeProducao());\n\n        Assert.assertEquals(\"BA\", DFUnidadeFederativa.BA.getCodigo());\n        Assert.assertEquals(\"29\", DFUnidadeFederativa.BA.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeProducao());\n\n        Assert.assertEquals(\"CE\", DFUnidadeFederativa.CE.getCodigo());\n        Assert.assertEquals(\"23\", DFUnidadeFederativa.CE.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeProducao());\n\n        Assert.assertEquals(\"DF\", DFUnidadeFederativa.DF.getCodigo());\n        Assert.assertEquals(\"53\", DFUnidadeFederativa.DF.getCodigoIbge());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeProducao());\n\n        Assert.assertEquals(\"ES\", DFUnidadeFederativa.ES.getCodigo());\n        Assert.assertEquals(\"32\", DFUnidadeFederativa.ES.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeProducao());\n\n        Assert.assertEquals(\"GO\", DFUnidadeFederativa.GO.getCodigo());\n        Assert.assertEquals(\"52\", DFUnidadeFederativa.GO.getCodigoIbge());\n        Assert.assertEquals(\"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeProducao());\n\n        Assert.assertEquals(\"MA\", DFUnidadeFederativa.MA.getCodigo());\n        Assert.assertEquals(\"21\", DFUnidadeFederativa.MA.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeProducao());\n\n        Assert.assertEquals(\"MG\", DFUnidadeFederativa.MG.getCodigo());\n        Assert.assertEquals(\"31\", DFUnidadeFederativa.MG.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao());\n        Assert.assertEquals(\"http://nfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeProducao());\n\n        Assert.assertEquals(\"MS\", DFUnidadeFederativa.MS.getCodigo());\n        Assert.assertEquals(\"50\", DFUnidadeFederativa.MS.getCodigoIbge());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeProducao());\n\n        Assert.assertEquals(\"MT\", DFUnidadeFederativa.MT.getCodigo());\n        Assert.assertEquals(\"51\", DFUnidadeFederativa.MT.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeProducao());\n\n        Assert.assertEquals(\"PA\", DFUnidadeFederativa.PA.getCodigo());\n        Assert.assertEquals(\"15\", DFUnidadeFederativa.PA.getCodigoIbge());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeProducao());\n\n        Assert.assertEquals(\"PB\", DFUnidadeFederativa.PB.getCodigo());\n        Assert.assertEquals(\"25\", DFUnidadeFederativa.PB.getCodigoIbge());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfcehom\", DFUnidadeFederativa.PB.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfce\", DFUnidadeFederativa.PB.getQrCodeProducao());\n\n        Assert.assertEquals(\"PE\", DFUnidadeFederativa.PE.getCodigo());\n        Assert.assertEquals(\"26\", DFUnidadeFederativa.PE.getCodigoIbge());\n        Assert.assertEquals(\"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeProducao());\n\n        Assert.assertEquals(\"PI\", DFUnidadeFederativa.PI.getCodigo());\n        Assert.assertEquals(\"22\", DFUnidadeFederativa.PI.getCodigoIbge());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeProducao());\n\n        Assert.assertEquals(\"PR\", DFUnidadeFederativa.PR.getCodigo());\n        Assert.assertEquals(\"41\", DFUnidadeFederativa.PR.getCodigoIbge());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RJ\", DFUnidadeFederativa.RJ.getCodigo());\n        Assert.assertEquals(\"33\", DFUnidadeFederativa.RJ.getCodigoIbge());\n        Assert.assertEquals(\"http://www.fazenda.rj.gov.br/nfce/consulta\", DFUnidadeFederativa.RJ.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.fazenda.rj.gov.br/nfce/consulta\", DFUnidadeFederativa.RJ.getQrCodeProducao());\n\n        Assert.assertEquals(\"RN\", DFUnidadeFederativa.RN.getCodigo());\n        Assert.assertEquals(\"24\", DFUnidadeFederativa.RN.getCodigoIbge());\n        Assert.assertEquals(\"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeProducao());\n\n        Assert.assertEquals(\"RO\", DFUnidadeFederativa.RO.getCodigo());\n        Assert.assertEquals(\"11\", DFUnidadeFederativa.RO.getCodigoIbge());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeProducao());\n\n        Assert.assertEquals(\"RR\", DFUnidadeFederativa.RR.getCodigo());\n        Assert.assertEquals(\"14\", DFUnidadeFederativa.RR.getCodigoIbge());\n        Assert.assertEquals(\"http://200.174.88.103:8080/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RS\", DFUnidadeFederativa.RS.getCodigo());\n        Assert.assertEquals(\"43\", DFUnidadeFederativa.RS.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeProducao());\n\n        Assert.assertEquals(\"SC\", DFUnidadeFederativa.SC.getCodigo());\n        Assert.assertEquals(\"42\", DFUnidadeFederativa.SC.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeProducao());\n\n        Assert.assertEquals(\"SE\", DFUnidadeFederativa.SE.getCodigo());\n        Assert.assertEquals(\"28\", DFUnidadeFederativa.SE.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeProducao());\n\n        Assert.assertEquals(\"SP\", DFUnidadeFederativa.SP.getCodigo());\n        Assert.assertEquals(\"35\", DFUnidadeFederativa.SP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeProducao());\n\n        Assert.assertEquals(\"TO\", DFUnidadeFederativa.TO.getCodigo());\n        Assert.assertEquals(\"17\", DFUnidadeFederativa.TO.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeProducao());\n\n        Assert.assertEquals(\"NC\", DFUnidadeFederativa.NACIONAL.getCodigo());\n        Assert.assertEquals(\"90\", DFUnidadeFederativa.NACIONAL.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeProducao());\n\n        Assert.assertEquals(\"RFB\", DFUnidadeFederativa.RFB.getCodigo());\n        Assert.assertEquals(\"91\", DFUnidadeFederativa.RFB.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeProducao());\n\n        Assert.assertEquals(\"EX\", DFUnidadeFederativa.EX.getCodigo());\n        Assert.assertEquals(\"99\", DFUnidadeFederativa.EX.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeProducao());\n    }"
+    },
+    "aSource": {
+      "startLine": 8,
+      "code": "@Test\n    public void deveRepresentarOCodigoCorretamente() {\n    \t\n        Assert.assertEquals(\"AC\", DFUnidadeFederativa.AC.getCodigo());\n        Assert.assertEquals(\"12\", DFUnidadeFederativa.AC.getCodigoIbge());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://hml.sefaznet.ac.gov.br/nfce/qrcode\", DFUnidadeFederativa.AC.getQrCodeProducao());\n\n        Assert.assertEquals(\"AL\", DFUnidadeFederativa.AL.getCodigo());\n        Assert.assertEquals(\"27\", DFUnidadeFederativa.AL.getCodigoIbge());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\", DFUnidadeFederativa.AL.getQrCodeProducao());\n\n\n        Assert.assertEquals(\"AM\", DFUnidadeFederativa.AM.getCodigo());\n        Assert.assertEquals(\"13\", DFUnidadeFederativa.AM.getCodigoIbge());\n        Assert.assertEquals(\"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\", DFUnidadeFederativa.AM.getQrCodeProducao());\n\n        Assert.assertEquals(\"AP\", DFUnidadeFederativa.AP.getCodigo());\n        Assert.assertEquals(\"16\", DFUnidadeFederativa.AP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\", DFUnidadeFederativa.AP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.ap.gov.br/nfce/nfce.php\", DFUnidadeFederativa.AP.getQrCodeProducao());\n\n        Assert.assertEquals(\"BA\", DFUnidadeFederativa.BA.getCodigo());\n        Assert.assertEquals(\"29\", DFUnidadeFederativa.BA.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\", DFUnidadeFederativa.BA.getQrCodeProducao());\n\n        Assert.assertEquals(\"CE\", DFUnidadeFederativa.CE.getCodigo());\n        Assert.assertEquals(\"23\", DFUnidadeFederativa.CE.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.CE.getQrCodeProducao());\n\n        Assert.assertEquals(\"DF\", DFUnidadeFederativa.DF.getCodigo());\n        Assert.assertEquals(\"53\", DFUnidadeFederativa.DF.getCodigoIbge());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\", DFUnidadeFederativa.DF.getQrCodeProducao());\n\n        Assert.assertEquals(\"ES\", DFUnidadeFederativa.ES.getCodigo());\n        Assert.assertEquals(\"32\", DFUnidadeFederativa.ES.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\", DFUnidadeFederativa.ES.getQrCodeProducao());\n\n        Assert.assertEquals(\"GO\", DFUnidadeFederativa.GO.getCodigo());\n        Assert.assertEquals(\"52\", DFUnidadeFederativa.GO.getCodigoIbge());\n        Assert.assertEquals(\"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\", DFUnidadeFederativa.GO.getQrCodeProducao());\n\n        Assert.assertEquals(\"MA\", DFUnidadeFederativa.MA.getCodigo());\n        Assert.assertEquals(\"21\", DFUnidadeFederativa.MA.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.MA.getQrCodeProducao());\n\n        Assert.assertEquals(\"MG\", DFUnidadeFederativa.MG.getCodigo());\n        Assert.assertEquals(\"31\", DFUnidadeFederativa.MG.getCodigoIbge());\n        Assert.assertEquals(\"http://hnfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao());\n        Assert.assertEquals(\"http://nfce.fazenda.mg.gov.br/portalnfce\", DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\", DFUnidadeFederativa.MG.getQrCodeProducao());\n\n        Assert.assertEquals(\"MS\", DFUnidadeFederativa.MS.getCodigo());\n        Assert.assertEquals(\"50\", DFUnidadeFederativa.MS.getCodigoIbge());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.dfe.ms.gov.br/nfce/qrcode\", DFUnidadeFederativa.MS.getQrCodeProducao());\n\n        Assert.assertEquals(\"MT\", DFUnidadeFederativa.MT.getCodigo());\n        Assert.assertEquals(\"51\", DFUnidadeFederativa.MT.getCodigoIbge());\n        Assert.assertEquals(\"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.mt.gov.br/nfce/consultanfce\", DFUnidadeFederativa.MT.getQrCodeProducao());\n\n        Assert.assertEquals(\"PA\", DFUnidadeFederativa.PA.getCodigo());\n        Assert.assertEquals(\"15\", DFUnidadeFederativa.PA.getCodigoIbge());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\", DFUnidadeFederativa.PA.getQrCodeProducao());\n\n        Assert.assertEquals(\"PB\", DFUnidadeFederativa.PB.getCodigo());\n        Assert.assertEquals(\"25\", DFUnidadeFederativa.PB.getCodigoIbge());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfcehom\", DFUnidadeFederativa.PB.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.receita.pb.gov.br/nfce\", DFUnidadeFederativa.PB.getQrCodeProducao());\n\n        Assert.assertEquals(\"PE\", DFUnidadeFederativa.PE.getCodigo());\n        Assert.assertEquals(\"26\", DFUnidadeFederativa.PE.getCodigoIbge());\n        Assert.assertEquals(\"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\", DFUnidadeFederativa.PE.getQrCodeProducao());\n\n        Assert.assertEquals(\"PI\", DFUnidadeFederativa.PI.getCodigo());\n        Assert.assertEquals(\"22\", DFUnidadeFederativa.PI.getCodigoIbge());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.sefaz.pi.gov.br/nfce/qrcode\", DFUnidadeFederativa.PI.getQrCodeProducao());\n\n        Assert.assertEquals(\"PR\", DFUnidadeFederativa.PR.getCodigo());\n        Assert.assertEquals(\"41\", DFUnidadeFederativa.PR.getCodigoIbge());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.fazenda.pr.gov.br/nfce/qrcode\", DFUnidadeFederativa.PR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RJ\", DFUnidadeFederativa.RJ.getCodigo());\n        Assert.assertEquals(\"33\", DFUnidadeFederativa.RJ.getCodigoIbge());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\", DFUnidadeFederativa.RJ.getQrCodeProducao());\n\n        Assert.assertEquals(\"RN\", DFUnidadeFederativa.RN.getCodigo());\n        Assert.assertEquals(\"24\", DFUnidadeFederativa.RN.getCodigoIbge());\n        Assert.assertEquals(\"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://nfce.set.rn.gov.br/consultarNFCe.aspx\", DFUnidadeFederativa.RN.getQrCodeProducao());\n\n        Assert.assertEquals(\"RO\", DFUnidadeFederativa.RO.getCodigo());\n        Assert.assertEquals(\"11\", DFUnidadeFederativa.RO.getCodigoIbge());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\", DFUnidadeFederativa.RO.getQrCodeProducao());\n\n        Assert.assertEquals(\"RR\", DFUnidadeFederativa.RR.getCodigo());\n        Assert.assertEquals(\"14\", DFUnidadeFederativa.RR.getCodigoIbge());\n        Assert.assertEquals(\"http://200.174.88.103:8080/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\", DFUnidadeFederativa.RR.getQrCodeProducao());\n\n        Assert.assertEquals(\"RS\", DFUnidadeFederativa.RS.getCodigo());\n        Assert.assertEquals(\"43\", DFUnidadeFederativa.RS.getCodigoIbge());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\", DFUnidadeFederativa.RS.getQrCodeProducao());\n\n        Assert.assertEquals(\"SC\", DFUnidadeFederativa.SC.getCodigo());\n        Assert.assertEquals(\"42\", DFUnidadeFederativa.SC.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.SC.getQrCodeProducao());\n\n        Assert.assertEquals(\"SE\", DFUnidadeFederativa.SE.getCodigo());\n        Assert.assertEquals(\"28\", DFUnidadeFederativa.SE.getCodigoIbge());\n        Assert.assertEquals(\"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeHomologacao());\n        Assert.assertEquals(\"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\", DFUnidadeFederativa.SE.getQrCodeProducao());\n\n        Assert.assertEquals(\"SP\", DFUnidadeFederativa.SP.getCodigo());\n        Assert.assertEquals(\"35\", DFUnidadeFederativa.SP.getCodigoIbge());\n        Assert.assertEquals(\"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeHomologacao());\n        Assert.assertEquals(\"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\", DFUnidadeFederativa.SP.getQrCodeProducao());\n\n        Assert.assertEquals(\"TO\", DFUnidadeFederativa.TO.getCodigo());\n        Assert.assertEquals(\"17\", DFUnidadeFederativa.TO.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.TO.getQrCodeProducao());\n\n        Assert.assertEquals(\"NC\", DFUnidadeFederativa.NACIONAL.getCodigo());\n        Assert.assertEquals(\"90\", DFUnidadeFederativa.NACIONAL.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.NACIONAL.getQrCodeProducao());\n\n        Assert.assertEquals(\"RFB\", DFUnidadeFederativa.RFB.getCodigo());\n        Assert.assertEquals(\"91\", DFUnidadeFederativa.RFB.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.RFB.getQrCodeProducao());\n\n        Assert.assertEquals(\"EX\", DFUnidadeFederativa.EX.getCodigo());\n        Assert.assertEquals(\"99\", DFUnidadeFederativa.EX.getCodigoIbge());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeHomologacao());\n        Assert.assertNull(DFUnidadeFederativa.EX.getQrCodeProducao());\n    }"
+    },
+    "bPath": "src/test/java/com/fincatto/documentofiscal/DFUnidadeFederativaTest.java",
+    "aPath": "src/test/java/com/fincatto/documentofiscal/DFUnidadeFederativaTest.java",
+    "bCommit": "ed30ca92",
+    "aCommit": "cb76a0f3",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "Assert.assertNull ( DFUnidadeFederativa.AL.getQrCodeHomologacao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 18
+          },
+          {
+            "line": "Assert.assertNull ( DFUnidadeFederativa.AL.getQrCodeProducao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 19
+          }
+        ],
+        "targetChanges": [
+          {
+            "line": "Assert.assertEquals ( \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , DFUnidadeFederativa.AL.getQrCodeHomologacao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 18
+          },
+          {
+            "line": "Assert.assertEquals ( \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , DFUnidadeFederativa.AL.getQrCodeProducao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 19
+          }
+        ],
+        "type": "MODIFY",
+        "sourceElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertNull()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertNull()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.AL"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertNull()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertNull()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeProducao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.AL"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeProducao()"
+          }
+        ],
+        "targetElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.AL"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeProducao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.AL"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeProducao()"
+          }
+        ]
+      },
+      {
+        "sourceChanges": [
+          {
+            "line": "Assert.assertEquals ( \"http://www.fazenda.rj.gov.br/nfce/consulta\" , DFUnidadeFederativa.RJ.getQrCodeHomologacao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 106
+          },
+          {
+            "line": "Assert.assertEquals ( \"http://www.fazenda.rj.gov.br/nfce/consulta\" , DFUnidadeFederativa.RJ.getQrCodeProducao ( ) ) ;",
+            "type": "DELETE",
+            "lineNo": 107
+          }
+        ],
+        "targetChanges": [
+          {
+            "line": "Assert.assertEquals ( \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , DFUnidadeFederativa.RJ.getQrCodeHomologacao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 106
+          },
+          {
+            "line": "Assert.assertEquals ( \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , DFUnidadeFederativa.RJ.getQrCodeProducao ( ) ) ;",
+            "type": "ADD",
+            "lineNo": 107
+          }
+        ],
+        "type": "MODIFY",
+        "sourceElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://www.fazenda.rj.gov.br/nfce/consulta'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.RJ"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://www.fazenda.rj.gov.br/nfce/consulta'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeProducao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.RJ"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeProducao()"
+          }
+        ],
+        "targetElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.RJ"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeHomologacao()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "org.junit.Assert"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertEquals(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode'"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "getQrCodeProducao()"
+          },
+          {
+            "type": "CtTypeAccess",
+            "value": "DFUnidadeFederativa.RJ"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "getQrCodeProducao()"
+          }
+        ]
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "failure",
+      "error_lines": [
+        18
+      ]
+    },
+    "repair_type": "test failure fix",
+    "coverage_repair_stats": "coverage_fix",
+    "mutation_repair_stats": "mutation_fix",
+    "coverage_loss": false,
+    "mutation_loss": false,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": null,
+      "repaired_line_coverage": 1.0,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": null,
+      "repaired_branch_coverage": null,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": null,
+      "repaired_mutation_coverage": 1.0
+    },
+    "focal_method": {
+      "focal_class_name": "com.fincatto.documentofiscal.DFUnidadeFederativa",
+      "focal_method_name": "getCodigoIbge",
+      "a_focal_method_code": {
+        "startLine": 70,
+        "endLine": 72,
+        "code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "fullName": "com.fincatto.documentofiscal.DFUnidadeFederativa.getCodigoIbge()",
+        "simpleName": "getCodigoIbge",
+        "className": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+      },
+      "b_focal_method_code": {
+        "startLine": 70,
+        "endLine": 72,
+        "code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "fullName": "com.fincatto.documentofiscal.DFUnidadeFederativa.getCodigoIbge()",
+        "simpleName": "getCodigoIbge",
+        "className": "com.fincatto.documentofiscal.DFUnidadeFederativa"
+      },
+      "a_focal_method_path": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+      "b_focal_method_path": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+      "aCommit": "cb76a0f3",
+      "bCommit": "ed30ca92",
+      "a_commit_path": "../../output/wmixvideo/nfe/codeMining/commits/cb76a0f3-0",
+      "b_commit_path": "../../output/wmixvideo/nfe/codeMining/commits/ed30ca92-cb76a0f3",
+      "line_mapping": [
+        {
+          "b_line": 70,
+          "a_line": 70,
+          "content": "public String getCodigoIbge() {"
+        },
+        {
+          "b_line": 71,
+          "a_line": 71,
+          "content": "        return this.codigoIbge;"
+        },
+        {
+          "b_line": 72,
+          "a_line": 72,
+          "content": "    }"
+        }
+      ],
+      "deleted_lines": [],
+      "added_lines": []
+    },
+    "aCommitTime": 1564063155,
+    "ID": "wmixvideo/nfe:2",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "wmixvideo/nfe",
+    "input": {
+      "test_code": "@Test public void deveRepresentarOCodigoCorretamente ( ) { Assert.assertEquals ( \"AC\" , DFUnidadeFederativa.AC.getCodigo ( ) ) ; Assert.assertEquals ( \"12\" , DFUnidadeFederativa.AC.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hml.sefaznet.ac.gov.br/nfce/qrcode\" , DFUnidadeFederativa.AC.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://hml.sefaznet.ac.gov.br/nfce/qrcode\" , DFUnidadeFederativa.AC.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AL\" , DFUnidadeFederativa.AL.getCodigo ( ) ) ; Assert.assertEquals ( \"27\" , DFUnidadeFederativa.AL.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.AL.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.AL.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AM\" , DFUnidadeFederativa.AM.getCodigo ( ) ) ; Assert.assertEquals ( \"13\" , DFUnidadeFederativa.AM.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homnfce.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\" , DFUnidadeFederativa.AM.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://sistemas.sefaz.am.gov.br/nfceweb/consultarNFCe.jsp\" , DFUnidadeFederativa.AM.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"AP\" , DFUnidadeFederativa.AP.getCodigo ( ) ) ; Assert.assertEquals ( \"16\" , DFUnidadeFederativa.AP.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.ap.gov.br/nfcehml/nfce.php\" , DFUnidadeFederativa.AP.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.ap.gov.br/nfce/nfce.php\" , DFUnidadeFederativa.AP.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"BA\" , DFUnidadeFederativa.BA.getCodigo ( ) ) ; Assert.assertEquals ( \"29\" , DFUnidadeFederativa.BA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hnfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\" , DFUnidadeFederativa.BA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfe.sefaz.ba.gov.br/servicos/nfce/modulos/geral/NFCEC_consulta_chave_acesso.aspx\" , DFUnidadeFederativa.BA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"CE\" , DFUnidadeFederativa.CE.getCodigo ( ) ) ; Assert.assertEquals ( \"23\" , DFUnidadeFederativa.CE.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.CE.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.CE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"DF\" , DFUnidadeFederativa.DF.getCodigo ( ) ) ; Assert.assertEquals ( \"53\" , DFUnidadeFederativa.DF.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\" , DFUnidadeFederativa.DF.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://dec.fazenda.df.gov.br/ConsultarNFCe.aspx\" , DFUnidadeFederativa.DF.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"ES\" , DFUnidadeFederativa.ES.getCodigo ( ) ) ; Assert.assertEquals ( \"32\" , DFUnidadeFederativa.ES.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homologacao.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\" , DFUnidadeFederativa.ES.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://app.sefaz.es.gov.br/ConsultaNFCe/qrcode.aspx\" , DFUnidadeFederativa.ES.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"GO\" , DFUnidadeFederativa.GO.getCodigo ( ) ) ; Assert.assertEquals ( \"52\" , DFUnidadeFederativa.GO.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homolog.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\" , DFUnidadeFederativa.GO.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfe.sefaz.go.gov.br/nfeweb/sites/nfce/danfeNFCe\" , DFUnidadeFederativa.GO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MA\" , DFUnidadeFederativa.MA.getCodigo ( ) ) ; Assert.assertEquals ( \"21\" , DFUnidadeFederativa.MA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.hom.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.MA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefaz.ma.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.MA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MG\" , DFUnidadeFederativa.MG.getCodigo ( ) ) ; Assert.assertEquals ( \"31\" , DFUnidadeFederativa.MG.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hnfce.fazenda.mg.gov.br/portalnfce\" , DFUnidadeFederativa.MG.getConsultaChaveAcessoHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.fazenda.mg.gov.br/portalnfce\" , DFUnidadeFederativa.MG.getConsultaChaveAcessoProducao ( ) ) ; Assert.assertEquals ( \"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\" , DFUnidadeFederativa.MG.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml\" , DFUnidadeFederativa.MG.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MS\" , DFUnidadeFederativa.MS.getCodigo ( ) ) ; Assert.assertEquals ( \"50\" , DFUnidadeFederativa.MS.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.dfe.ms.gov.br/nfce/qrcode\" , DFUnidadeFederativa.MS.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.dfe.ms.gov.br/nfce/qrcode\" , DFUnidadeFederativa.MS.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"MT\" , DFUnidadeFederativa.MT.getCodigo ( ) ) ; Assert.assertEquals ( \"51\" , DFUnidadeFederativa.MT.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://homologacao.sefaz.mt.gov.br/nfce/consultanfce\" , DFUnidadeFederativa.MT.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.mt.gov.br/nfce/consultanfce\" , DFUnidadeFederativa.MT.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PA\" , DFUnidadeFederativa.PA.getCodigo ( ) ) ; Assert.assertEquals ( \"15\" , DFUnidadeFederativa.PA.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam\" , DFUnidadeFederativa.PA.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://appnfc.sefa.pa.gov.br/portal/view/consultas/nfce/nfceForm.seam\" , DFUnidadeFederativa.PA.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PB\" , DFUnidadeFederativa.PB.getCodigo ( ) ) ; Assert.assertEquals ( \"25\" , DFUnidadeFederativa.PB.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.receita.pb.gov.br/nfcehom\" , DFUnidadeFederativa.PB.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.receita.pb.gov.br/nfce\" , DFUnidadeFederativa.PB.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PE\" , DFUnidadeFederativa.PE.getCodigo ( ) ) ; Assert.assertEquals ( \"26\" , DFUnidadeFederativa.PE.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://nfcehomolog.sefaz.pe.gov.br/nfce-web/consultarNFCe\" , DFUnidadeFederativa.PE.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.sefaz.pe.gov.br/nfce-web/consultarNFCe\" , DFUnidadeFederativa.PE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PI\" , DFUnidadeFederativa.PI.getCodigo ( ) ) ; Assert.assertEquals ( \"22\" , DFUnidadeFederativa.PI.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.pi.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PI.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.sefaz.pi.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PI.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"PR\" , DFUnidadeFederativa.PR.getCodigo ( ) ) ; Assert.assertEquals ( \"41\" , DFUnidadeFederativa.PR.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.pr.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PR.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.pr.gov.br/nfce/qrcode\" , DFUnidadeFederativa.PR.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RJ\" , DFUnidadeFederativa.RJ.getCodigo ( ) ) ; Assert.assertEquals ( \"33\" , DFUnidadeFederativa.RJ.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.rj.gov.br/nfce/consulta\" , DFUnidadeFederativa.RJ.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.fazenda.rj.gov.br/nfce/consulta\" , DFUnidadeFederativa.RJ.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RN\" , DFUnidadeFederativa.RN.getCodigo ( ) ) ; Assert.assertEquals ( \"24\" , DFUnidadeFederativa.RN.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://hom.nfce.set.rn.gov.br/consultarNFCe.aspx\" , DFUnidadeFederativa.RN.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://nfce.set.rn.gov.br/consultarNFCe.aspx\" , DFUnidadeFederativa.RN.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RO\" , DFUnidadeFederativa.RO.getCodigo ( ) ) ; Assert.assertEquals ( \"11\" , DFUnidadeFederativa.RO.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\" , DFUnidadeFederativa.RO.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp\" , DFUnidadeFederativa.RO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RR\" , DFUnidadeFederativa.RR.getCodigo ( ) ) ; Assert.assertEquals ( \"14\" , DFUnidadeFederativa.RR.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://200.174.88.103:8080/nfce/servlet/qrcode\" , DFUnidadeFederativa.RR.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rr.gov.br/nfce/servlet/qrcode\" , DFUnidadeFederativa.RR.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RS\" , DFUnidadeFederativa.RS.getCodigo ( ) ) ; Assert.assertEquals ( \"43\" , DFUnidadeFederativa.RS.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\" , DFUnidadeFederativa.RS.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.sefaz.rs.gov.br/NFCE/NFCE-COM.aspx\" , DFUnidadeFederativa.RS.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SC\" , DFUnidadeFederativa.SC.getCodigo ( ) ) ; Assert.assertEquals ( \"42\" , DFUnidadeFederativa.SC.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.SC.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.SC.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SE\" , DFUnidadeFederativa.SE.getCodigo ( ) ) ; Assert.assertEquals ( \"28\" , DFUnidadeFederativa.SE.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"http://www.hom.nfe.se.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.SE.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"http://www.nfce.se.gov.br/portal/consultarNFCe.jsp\" , DFUnidadeFederativa.SE.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"SP\" , DFUnidadeFederativa.SP.getCodigo ( ) ) ; Assert.assertEquals ( \"35\" , DFUnidadeFederativa.SP.getCodigoIbge ( ) ) ; Assert.assertEquals ( \"https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\" , DFUnidadeFederativa.SP.getQrCodeHomologacao ( ) ) ; Assert.assertEquals ( \"https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx\" , DFUnidadeFederativa.SP.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"TO\" , DFUnidadeFederativa.TO.getCodigo ( ) ) ; Assert.assertEquals ( \"17\" , DFUnidadeFederativa.TO.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.TO.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"NC\" , DFUnidadeFederativa.NACIONAL.getCodigo ( ) ) ; Assert.assertEquals ( \"90\" , DFUnidadeFederativa.NACIONAL.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.NACIONAL.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.NACIONAL.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"RFB\" , DFUnidadeFederativa.RFB.getCodigo ( ) ) ; Assert.assertEquals ( \"91\" , DFUnidadeFederativa.RFB.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.RFB.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.RFB.getQrCodeProducao ( ) ) ; Assert.assertEquals ( \"EX\" , DFUnidadeFederativa.EX.getCodigo ( ) ) ; Assert.assertEquals ( \"99\" , DFUnidadeFederativa.EX.getCodigoIbge ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.EX.getQrCodeHomologacao ( ) ) ; Assert.assertNull ( DFUnidadeFederativa.EX.getQrCodeProducao ( ) ) ; }",
+      "test_name": "com.fincatto.documentofiscal.DFUnidadeFederativaTest.deveRepresentarOCodigoCorretamente()",
+      "project": "wmixvideo/nfe",
+      "test_method": [],
+      "focal_method": [],
+      "focal_file": [
+        {
+          "diff": "[DELETE] AL ( \"AL\" , \"Alagoas\" , \"27\" , null , null , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" ) , [ADD] AL ( \"AL\" , \"Alagoas\" , \"27\" , \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RJ ( \"RJ\" , \"Rio de Janeiro\" , \"33\" , \"http://www.fazenda.rj.gov.br/nfce/consulta\" , \"http://www.fazenda.rj.gov.br/nfce/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" ) , [ADD] RJ ( \"RJ\" , \"Rio de Janeiro\" , \"33\" , \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , \"www.nfce.fazenda.rj.gov.br/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        }
+      ],
+      "high_frequency": [],
+      "all_diffs": [
+        {
+          "diff": "[DELETE] AL ( \"AL\" , \"Alagoas\" , \"27\" , null , null , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" ) , [ADD] AL ( \"AL\" , \"Alagoas\" , \"27\" , \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , \"http://nfce.sefaz.al.gov.br/QRCode/consultarNFCe.jsp\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" , \"http://nfce.sefaz.al.gov.br/consultaNFCe.htm\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RJ ( \"RJ\" , \"Rio de Janeiro\" , \"33\" , \"http://www.fazenda.rj.gov.br/nfce/consulta\" , \"http://www.fazenda.rj.gov.br/nfce/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" ) , [ADD] RJ ( \"RJ\" , \"Rio de Janeiro\" , \"33\" , \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , \"http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode\" , \"www.nfce.fazenda.rj.gov.br/consulta\" , \"www.nfce.fazenda.rj.gov.br/consulta\" ) ,",
+          "file": "src/main/java/com/fincatto/documentofiscal/DFUnidadeFederativa.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 2,
+        "after_whitespace_filter": 2,
+        "matched_diffs": 2,
+        "test_method_count": 0,
+        "focal_file_count": 2,
+        "focal_method_count": 0,
+        "high_frequency_count": 0
+      },
+      "focal_method_info": {
+        "focal_method_changed": false,
+        "b_focal_method_code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }",
+        "a_focal_method_code": "public String getCodigoIbge() {\n        return this.codigoIbge;\n    }"
+      },
+      "test_import": [
+        "import org.junit.Assert;",
+        "import org.junit.Test;"
+      ],
+      "class_fields": [],
+      "non_test_methods": [],
+      "prioritized_changes": []
+    }
+  }
+]

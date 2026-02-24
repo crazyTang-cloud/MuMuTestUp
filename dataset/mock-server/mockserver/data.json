@@ -1,0 +1,331 @@
+[
+  {
+    "name": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoderTest.shouldMapHttpServletRequestToHttpRequest()",
+    "bSource": {
+      "startLine": 31,
+      "code": "@Test\n    public void shouldMapHttpServletRequestToHttpRequest() {\n        // given\n        MockHttpServletRequest httpServletRequest = new MockHttpServletRequest(\"GET\", \"/requestURI\");\n        httpServletRequest.setContextPath(null);\n        httpServletRequest.setQueryString(\"queryStringParameterNameOne=queryStringParameterValueOne_One&queryStringParameterNameOne=queryStringParameterValueOne_Two&queryStringParameterNameTwo=queryStringParameterValueTwo_One\");\n        httpServletRequest.addHeader(\"headerName1\", \"headerValue1_1\");\n        httpServletRequest.addHeader(\"headerName1\", \"headerValue1_2\");\n        httpServletRequest.addHeader(\"headerName2\", \"headerValue2\");\n        httpServletRequest.addHeader(\"Content-Type\", \"multipart/form-data\");\n        httpServletRequest.setCookies(new javax.servlet.http.Cookie(\"cookieName1\", \"cookieValue1\"), new javax.servlet.http.Cookie(\"cookieName2\", \"cookieValue2\"));\n        httpServletRequest.setContent(\"bodyParameterNameOne=bodyParameterValueOne_One&bodyParameterNameOne=bodyParameterValueOne_Two&bodyParameterNameTwo=bodyParameterValueTwo_One\".getBytes(UTF_8));\n        httpServletRequest.setLocalAddr(\"local_addr\");\n        httpServletRequest.setLocalPort(1234);\n        httpServletRequest.setRemoteHost(\"remote_addr\");\n\n        // when\n        HttpRequest httpRequest = new HttpServletRequestToMockServerHttpRequestDecoder(configuration(), new MockServerLogger()).mapHttpServletRequestToMockServerRequest(httpServletRequest);\n\n        // then\n        assertEquals(string(\"/requestURI\"), httpRequest.getPath());\n        assertEquals(new ParameterBody(\n            new Parameter(\"bodyParameterNameOne\", \"bodyParameterValueOne_One\"),\n            new Parameter(\"bodyParameterNameOne\", \"bodyParameterValueOne_Two\"),\n            new Parameter(\"bodyParameterNameTwo\", \"bodyParameterValueTwo_One\")\n        ).toString(), httpRequest.getBody().toString());\n        assertEquals(new HashSet<>(Arrays.asList(\n            new Parameter(\"queryStringParameterNameOne\", \"queryStringParameterValueOne_One\", \"queryStringParameterValueOne_Two\"),\n            new Parameter(\"queryStringParameterNameTwo\", \"queryStringParameterValueTwo_One\")\n        )), new HashSet<>(httpRequest.getQueryStringParameterList()));\n        assertEquals(Lists.newArrayList(\n            new Header(\"headerName1\", \"headerValue1_1\", \"headerValue1_2\"),\n            new Header(\"headerName2\", \"headerValue2\"),\n            new Header(\"Content-Type\", \"multipart/form-data\"),\n            new Header(\"Cookie\", \"cookieName1=cookieValue1; cookieName2=cookieValue2\")\n        ), httpRequest.getHeaderList());\n        assertEquals(Lists.newArrayList(\n            new Cookie(\"cookieName1\", \"cookieValue1\"),\n            new Cookie(\"cookieName2\", \"cookieValue2\")\n        ), httpRequest.getCookieList());\n        assertThat(httpRequest.getLocalAddress(), equalTo(\"local_addr:1234\"));\n        assertThat(httpRequest.getRemoteAddress(), equalTo(\"remote_addr\"));\n    }"
+    },
+    "aSource": {
+      "startLine": 31,
+      "code": "@Test\n    public void shouldMapHttpServletRequestToHttpRequest() {\n        // given\n        MockHttpServletRequest httpServletRequest = new MockHttpServletRequest(\"GET\", \"/requestURI\");\n        httpServletRequest.setContextPath(null);\n        httpServletRequest.setQueryString(\"queryStringParameterNameOne=queryStringParameterValueOne_One&queryStringParameterNameOne=queryStringParameterValueOne_Two&queryStringParameterNameTwo=queryStringParameterValueTwo_One\");\n        httpServletRequest.addHeader(\"headerName1\", \"headerValue1_1\");\n        httpServletRequest.addHeader(\"headerName1\", \"headerValue1_2\");\n        httpServletRequest.addHeader(\"headerName2\", \"headerValue2\");\n        httpServletRequest.addHeader(\"Content-Type\", \"multipart/form-data\");\n        httpServletRequest.setCookies(new javax.servlet.http.Cookie(\"cookieName1\", \"cookieValue1\"), new javax.servlet.http.Cookie(\"cookieName2\", \"cookieValue2\"));\n        httpServletRequest.setContent(\"bodyParameterNameOne=bodyParameterValueOne_One&bodyParameterNameOne=bodyParameterValueOne_Two&bodyParameterNameTwo=bodyParameterValueTwo_One\".getBytes(UTF_8));\n        httpServletRequest.setLocalAddr(\"local_addr\");\n        httpServletRequest.setLocalPort(1234);\n        httpServletRequest.setRemoteHost(\"remote_addr\");\n\n        // when\n        HttpRequest httpRequest = new HttpServletRequestToMockServerHttpRequestDecoder(configuration(), new MockServerLogger()).mapHttpServletRequestToMockServerRequest(httpServletRequest);\n\n        // then\n        assertEquals(string(\"/requestURI\"), httpRequest.getPath());\n        assertEquals(new ParameterBody(\n            new Parameter(\"bodyParameterNameOne\", \"bodyParameterValueOne_One\"),\n            new Parameter(\"bodyParameterNameOne\", \"bodyParameterValueOne_Two\"),\n            new Parameter(\"bodyParameterNameTwo\", \"bodyParameterValueTwo_One\")\n        ).toString(), httpRequest.getBody().toString());\n        assertEquals(new HashSet<>(Arrays.asList(\n            new Parameter(\"queryStringParameterNameOne\", \"queryStringParameterValueOne_One\", \"queryStringParameterValueOne_Two\"),\n            new Parameter(\"queryStringParameterNameTwo\", \"queryStringParameterValueTwo_One\")\n        )), new HashSet<>(httpRequest.getQueryStringParameterList()));\n        assertEquals(Lists.newArrayList(\n            new Header(\"headerName1\", \"headerValue1_1\", \"headerValue1_2\"),\n            new Header(\"headerName2\", \"headerValue2\"),\n            new Header(\"Content-Type\", \"multipart/form-data\"),\n            new Header(\"Cookie\", \"cookieName1=cookieValue1; cookieName2=cookieValue2\")\n        ), httpRequest.getHeaderList());\n        assertEquals(Lists.newArrayList(\n            new Cookie(\"cookieName1\", \"cookieValue1\"),\n            new Cookie(\"cookieName2\", \"cookieValue2\")\n        ), httpRequest.getCookieList());\n        assertThat(httpRequest.getLocalAddress(), equalTo(\"local_addr:1234\"));\n        assertThat(httpRequest.getRemoteAddress(), equalTo(\"remote_addr:80\"));\n    }"
+    },
+    "bPath": "mockserver-core/src/test/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoderTest.java",
+    "aPath": "mockserver-core/src/test/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoderTest.java",
+    "bCommit": "093f9b373",
+    "aCommit": "770affa0a",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "assertThat ( httpRequest.getRemoteAddress ( ) , equalTo ( \"remote_addr\" ) ) ;",
+            "type": "DELETE",
+            "lineNo": 72
+          }
+        ],
+        "targetChanges": [
+          {
+            "line": "assertThat ( httpRequest.getRemoteAddress ( ) , equalTo ( \"remote_addr:80\" ) ) ;",
+            "type": "ADD",
+            "lineNo": 72
+          }
+        ],
+        "type": "MODIFY",
+        "sourceElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertThat(java.lang.String,<unknown>)"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertThat(java.lang.String,<unknown>)"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "org.mockserver.model.HttpRequest.getRemoteAddress()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "org.mockserver.model.HttpRequest httpRequest"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "org.mockserver.model.HttpRequest.getRemoteAddress()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "equalTo(java.lang.String)"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "equalTo(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'remote_addr'"
+          }
+        ],
+        "targetElements": [
+          {
+            "type": "CtInvocation",
+            "value": "assertThat(java.lang.String,<unknown>)"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "assertThat(java.lang.String,<unknown>)"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "org.mockserver.model.HttpRequest.getRemoteAddress()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "org.mockserver.model.HttpRequest httpRequest"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "org.mockserver.model.HttpRequest.getRemoteAddress()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "equalTo(java.lang.String)"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "equalTo(java.lang.String)"
+          },
+          {
+            "type": "CtLiteral",
+            "value": "java.lang.String 'remote_addr:80'"
+          }
+        ]
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "failure",
+      "error_lines": [
+        72
+      ]
+    },
+    "repair_type": "test failure fix",
+    "coverage_repair_stats": "coverage_fix",
+    "mutation_repair_stats": "mutation_fix",
+    "coverage_loss": false,
+    "mutation_loss": false,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": null,
+      "repaired_line_coverage": 1.0,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": null,
+      "repaired_branch_coverage": null,
+      "baseline_mutation_coverage": 0.75,
+      "broken_mutation_coverage": null,
+      "repaired_mutation_coverage": 0.75
+    },
+    "focal_method": {
+      "focal_class_name": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoder",
+      "focal_method_name": "mapHttpServletRequestToMockServerRequest",
+      "a_focal_method_code": {
+        "startLine": 34,
+        "endLine": 51,
+        "code": "public HttpRequest mapHttpServletRequestToMockServerRequest(HttpServletRequest httpServletRequest) {\n        HttpRequest request = new HttpRequest();\n        setMethod(request, httpServletRequest);\n\n        setPath(request, httpServletRequest);\n        setQueryString(request, httpServletRequest);\n\n        setBody(request, httpServletRequest);\n        setHeaders(request, httpServletRequest);\n        setCookies(request, httpServletRequest);\n        setSocketAddress(request, httpServletRequest);\n\n        request.withKeepAlive(isKeepAlive(httpServletRequest));\n        request.withSecure(httpServletRequest.isSecure());\n        request.withLocalAddress(httpServletRequest.getLocalAddr() + \":\" + httpServletRequest.getLocalPort());\n        request.withRemoteAddress(httpServletRequest.getRemoteHost() + \":\" + httpServletRequest.getRemotePort());\n        return request;\n    }",
+        "fullName": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoder.mapHttpServletRequestToMockServerRequest(HttpServletRequest)",
+        "simpleName": "mapHttpServletRequestToMockServerRequest",
+        "className": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoder"
+      },
+      "b_focal_method_code": {
+        "startLine": 34,
+        "endLine": 51,
+        "code": "public HttpRequest mapHttpServletRequestToMockServerRequest(HttpServletRequest httpServletRequest) {\n        HttpRequest request = new HttpRequest();\n        setMethod(request, httpServletRequest);\n\n        setPath(request, httpServletRequest);\n        setQueryString(request, httpServletRequest);\n\n        setBody(request, httpServletRequest);\n        setHeaders(request, httpServletRequest);\n        setCookies(request, httpServletRequest);\n        setSocketAddress(request, httpServletRequest);\n\n        request.withKeepAlive(isKeepAlive(httpServletRequest));\n        request.withSecure(httpServletRequest.isSecure());\n        request.withLocalAddress(httpServletRequest.getLocalAddr() + \":\" + httpServletRequest.getLocalPort());\n        request.withRemoteAddress(httpServletRequest.getRemoteHost());\n        return request;\n    }",
+        "fullName": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoder.mapHttpServletRequestToMockServerRequest(HttpServletRequest)",
+        "simpleName": "mapHttpServletRequestToMockServerRequest",
+        "className": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoder"
+      },
+      "a_focal_method_path": "mockserver-core/src/main/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoder.java",
+      "b_focal_method_path": "mockserver-core/src/main/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoder.java",
+      "aCommit": "770affa0a",
+      "bCommit": "093f9b373",
+      "a_commit_path": "../../output/mock-server/mockserver/codeMining/commits/770affa0a-0",
+      "b_commit_path": "../../output/mock-server/mockserver/codeMining/commits/093f9b373-770affa0a",
+      "line_mapping": [
+        {
+          "b_line": 34,
+          "a_line": 34,
+          "content": "public HttpRequest mapHttpServletRequestToMockServerRequest(HttpServletRequest httpServletRequest) {"
+        },
+        {
+          "b_line": 35,
+          "a_line": 35,
+          "content": "        HttpRequest request = new HttpRequest();"
+        },
+        {
+          "b_line": 36,
+          "a_line": 36,
+          "content": "        setMethod(request, httpServletRequest);"
+        },
+        {
+          "b_line": 37,
+          "a_line": 37,
+          "content": ""
+        },
+        {
+          "b_line": 38,
+          "a_line": 38,
+          "content": "        setPath(request, httpServletRequest);"
+        },
+        {
+          "b_line": 39,
+          "a_line": 39,
+          "content": "        setQueryString(request, httpServletRequest);"
+        },
+        {
+          "b_line": 40,
+          "a_line": 40,
+          "content": ""
+        },
+        {
+          "b_line": 41,
+          "a_line": 41,
+          "content": "        setBody(request, httpServletRequest);"
+        },
+        {
+          "b_line": 42,
+          "a_line": 42,
+          "content": "        setHeaders(request, httpServletRequest);"
+        },
+        {
+          "b_line": 43,
+          "a_line": 43,
+          "content": "        setCookies(request, httpServletRequest);"
+        },
+        {
+          "b_line": 44,
+          "a_line": 44,
+          "content": "        setSocketAddress(request, httpServletRequest);"
+        },
+        {
+          "b_line": 45,
+          "a_line": 45,
+          "content": ""
+        },
+        {
+          "b_line": 46,
+          "a_line": 46,
+          "content": "        request.withKeepAlive(isKeepAlive(httpServletRequest));"
+        },
+        {
+          "b_line": 47,
+          "a_line": 47,
+          "content": "        request.withSecure(httpServletRequest.isSecure());"
+        },
+        {
+          "b_line": 48,
+          "a_line": 48,
+          "content": "        request.withLocalAddress(httpServletRequest.getLocalAddr() + \":\" + httpServletRequest.getLocalPort());"
+        },
+        {
+          "b_line": 50,
+          "a_line": 50,
+          "content": "        return request;"
+        },
+        {
+          "b_line": 51,
+          "a_line": 51,
+          "content": "    }"
+        }
+      ],
+      "deleted_lines": [
+        {
+          "b_line": 49,
+          "content": "        request.withRemoteAddress(httpServletRequest.getRemoteHost());"
+        }
+      ],
+      "added_lines": [
+        {
+          "a_line": 49,
+          "content": "        request.withRemoteAddress(httpServletRequest.getRemoteHost() + \":\" + httpServletRequest.getRemotePort());"
+        }
+      ]
+    },
+    "aCommitTime": 1662631504,
+    "ID": "mock-server/mockserver:0",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "mock-server/mockserver",
+    "input": {
+      "test_code": "@Test public void shouldMapHttpServletRequestToHttpRequest ( ) { MockHttpServletRequest httpServletRequest = new MockHttpServletRequest ( \"GET\" , \"/requestURI\" ) ; httpServletRequest.setContextPath ( null ) ; httpServletRequest.setQueryString ( \"queryStringParameterNameOne=queryStringParameterValueOne_One&queryStringParameterNameOne=queryStringParameterValueOne_Two&queryStringParameterNameTwo=queryStringParameterValueTwo_One\" ) ; httpServletRequest.addHeader ( \"headerName1\" , \"headerValue1_1\" ) ; httpServletRequest.addHeader ( \"headerName1\" , \"headerValue1_2\" ) ; httpServletRequest.addHeader ( \"headerName2\" , \"headerValue2\" ) ; httpServletRequest.addHeader ( \"Content-Type\" , \"multipart/form-data\" ) ; httpServletRequest.setCookies ( new javax.servlet.http.Cookie ( \"cookieName1\" , \"cookieValue1\" ) , new javax.servlet.http.Cookie ( \"cookieName2\" , \"cookieValue2\" ) ) ; httpServletRequest.setContent ( \"bodyParameterNameOne=bodyParameterValueOne_One&bodyParameterNameOne=bodyParameterValueOne_Two&bodyParameterNameTwo=bodyParameterValueTwo_One\".getBytes ( UTF_8 ) ) ; httpServletRequest.setLocalAddr ( \"local_addr\" ) ; httpServletRequest.setLocalPort ( 1234 ) ; httpServletRequest.setRemoteHost ( \"remote_addr\" ) ; HttpRequest httpRequest = new HttpServletRequestToMockServerHttpRequestDecoder ( configuration ( ) , new MockServerLogger ( ) ) .mapHttpServletRequestToMockServerRequest ( httpServletRequest ) ; assertEquals ( string ( \"/requestURI\" ) , httpRequest.getPath ( ) ) ; assertEquals ( new ParameterBody ( new Parameter ( \"bodyParameterNameOne\" , \"bodyParameterValueOne_One\" ) , new Parameter ( \"bodyParameterNameOne\" , \"bodyParameterValueOne_Two\" ) , new Parameter ( \"bodyParameterNameTwo\" , \"bodyParameterValueTwo_One\" ) ) .toString ( ) , httpRequest.getBody ( ) .toString ( ) ) ; assertEquals ( new HashSet < > ( Arrays.asList ( new Parameter ( \"queryStringParameterNameOne\" , \"queryStringParameterValueOne_One\" , \"queryStringParameterValueOne_Two\" ) , new Parameter ( \"queryStringParameterNameTwo\" , \"queryStringParameterValueTwo_One\" ) ) ) , new HashSet < > ( httpRequest.getQueryStringParameterList ( ) ) ) ; assertEquals ( Lists.newArrayList ( new Header ( \"headerName1\" , \"headerValue1_1\" , \"headerValue1_2\" ) , new Header ( \"headerName2\" , \"headerValue2\" ) , new Header ( \"Content-Type\" , \"multipart/form-data\" ) , new Header ( \"Cookie\" , \"cookieName1=cookieValue1; cookieName2=cookieValue2\" ) ) , httpRequest.getHeaderList ( ) ) ; assertEquals ( Lists.newArrayList ( new Cookie ( \"cookieName1\" , \"cookieValue1\" ) , new Cookie ( \"cookieName2\" , \"cookieValue2\" ) ) , httpRequest.getCookieList ( ) ) ; assertThat ( httpRequest.getLocalAddress ( ) , equalTo ( \"local_addr:1234\" ) ) ; assertThat ( httpRequest.getRemoteAddress ( ) , equalTo ( \"remote_addr\" ) ) ; }",
+      "test_name": "org.mockserver.mappers.HttpServletRequestToMockServerHttpRequestDecoderTest.shouldMapHttpServletRequestToHttpRequest()",
+      "project": "mock-server/mockserver",
+      "test_method": [
+        {
+          "diff": "[DELETE] httpRequest.withRemoteAddress ( ( ( InetSocketAddress ) remoteAddress ) .getHostString ( ) ) ; [ADD] httpRequest.withRemoteAddress ( StringUtils.removeStart ( remoteAddress.toString ( ) , \"/\" ) ) ;",
+          "file": "mockserver-core/src/main/java/org/mockserver/mappers/FullHttpRequestToMockServerHttpRequest.java",
+          "frequency": 1
+        }
+      ],
+      "focal_method": [
+        {
+          "diff": "[DELETE] request.withRemoteAddress ( httpServletRequest.getRemoteHost ( ) ) ; [ADD] request.withRemoteAddress ( httpServletRequest.getRemoteHost ( ) + \":\" + httpServletRequest.getRemotePort ( ) ) ;",
+          "file": "mockserver-core/src/main/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoder.java",
+          "frequency": 1
+        }
+      ],
+      "focal_file": [],
+      "high_frequency": [],
+      "all_diffs": [
+        {
+          "diff": "[DELETE] httpRequest.withRemoteAddress ( ( ( InetSocketAddress ) remoteAddress ) .getHostString ( ) ) ; [ADD] httpRequest.withRemoteAddress ( StringUtils.removeStart ( remoteAddress.toString ( ) , \"/\" ) ) ;",
+          "file": "mockserver-core/src/main/java/org/mockserver/mappers/FullHttpRequestToMockServerHttpRequest.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] request.withRemoteAddress ( httpServletRequest.getRemoteHost ( ) ) ; [ADD] request.withRemoteAddress ( httpServletRequest.getRemoteHost ( ) + \":\" + httpServletRequest.getRemotePort ( ) ) ;",
+          "file": "mockserver-core/src/main/java/org/mockserver/mappers/HttpServletRequestToMockServerHttpRequestDecoder.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 2,
+        "after_whitespace_filter": 2,
+        "matched_diffs": 2,
+        "test_method_count": 1,
+        "focal_file_count": 1,
+        "focal_method_count": 2,
+        "high_frequency_count": 0
+      },
+      "focal_method_info": {
+        "focal_method_changed": true,
+        "b_focal_method_code": "public HttpRequest mapHttpServletRequestToMockServerRequest(HttpServletRequest httpServletRequest) {\n        HttpRequest request = new HttpRequest();\n        setMethod(request, httpServletRequest);\n\n        setPath(request, httpServletRequest);\n        setQueryString(request, httpServletRequest);\n\n        setBody(request, httpServletRequest);\n        setHeaders(request, httpServletRequest);\n        setCookies(request, httpServletRequest);\n        setSocketAddress(request, httpServletRequest);\n\n        request.withKeepAlive(isKeepAlive(httpServletRequest));\n        request.withSecure(httpServletRequest.isSecure());\n        request.withLocalAddress(httpServletRequest.getLocalAddr() + \":\" + httpServletRequest.getLocalPort());\n        request.withRemoteAddress(httpServletRequest.getRemoteHost());\n        return request;\n    }",
+        "a_focal_method_code": "public HttpRequest mapHttpServletRequestToMockServerRequest(HttpServletRequest httpServletRequest) {\n        HttpRequest request = new HttpRequest();\n        setMethod(request, httpServletRequest);\n\n        setPath(request, httpServletRequest);\n        setQueryString(request, httpServletRequest);\n\n        setBody(request, httpServletRequest);\n        setHeaders(request, httpServletRequest);\n        setCookies(request, httpServletRequest);\n        setSocketAddress(request, httpServletRequest);\n\n        request.withKeepAlive(isKeepAlive(httpServletRequest));\n        request.withSecure(httpServletRequest.isSecure());\n        request.withLocalAddress(httpServletRequest.getLocalAddr() + \":\" + httpServletRequest.getLocalPort());\n        request.withRemoteAddress(httpServletRequest.getRemoteHost() + \":\" + httpServletRequest.getRemotePort());\n        return request;\n    }"
+      },
+      "test_import": [
+        "import com.google.common.collect.Lists;",
+        "import org.junit.Test;",
+        "import org.mockserver.configuration.Configuration;",
+        "import org.mockserver.logging.MockServerLogger;",
+        "import org.mockserver.model.*;",
+        "import org.springframework.mock.web.MockHttpServletRequest;",
+        "import javax.servlet.http.HttpServletRequest;",
+        "import java.io.IOException;",
+        "import java.util.Arrays;",
+        "import java.util.Enumeration;",
+        "import java.util.HashSet;",
+        "import static java.nio.charset.StandardCharsets.UTF_8;",
+        "import static junit.framework.TestCase.assertEquals;",
+        "import static org.hamcrest.MatcherAssert.assertThat;",
+        "import static org.hamcrest.Matchers.equalTo;",
+        "import static org.mockito.Mockito.mock;",
+        "import static org.mockito.Mockito.when;",
+        "import static org.mockserver.configuration.Configuration.configuration;",
+        "import static org.mockserver.model.NottableString.string;"
+      ],
+      "class_fields": [],
+      "non_test_methods": [],
+      "prioritized_changes": []
+    }
+  }
+]

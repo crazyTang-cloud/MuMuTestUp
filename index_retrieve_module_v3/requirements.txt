@@ -1,0 +1,21 @@
+# Core dependencies
+tree-sitter>=0.21.0
+tree-sitter-java>=0.21.0
+
+# LangChain and OpenAI
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-chroma>=0.1.0
+
+# Vector database
+chromadb>=0.4.22
+
+# Database
+sqlite3; python_version < '3.0'  # Built-in for Python 3+
+
+# Progress bars and utilities
+tqdm>=4.66.0
+
+# Environment variables (optional but recommended)
+python-dotenv>=1.0.0
+

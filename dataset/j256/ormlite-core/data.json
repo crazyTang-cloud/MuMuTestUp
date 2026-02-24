@@ -1,0 +1,1257 @@
+[
+  {
+    "name": "com.j256.ormlite.stmt.UpdateBuilderTest.testPrepareStatementUpdateValueString()",
+    "bSource": {
+      "startLine": 20,
+      "code": "@Test\n\tpublic void testPrepareStatementUpdateValueString() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 1312;\n\t\tstmtb.updateColumnValue(Foo.ID_COLUMN_NAME, idVal);\n\t\tPreparedUpdate<Foo> stmt = stmtb.prepare();\n\t\tstmt.getStatement();\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.ID_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}"
+    },
+    "aSource": {
+      "startLine": 20,
+      "code": "@Test\n\tpublic void testPrepareStatementUpdateValueString() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 1312;\n\t\tstmtb.updateColumnValue(Foo.ID_COLUMN_NAME, idVal);\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.ID_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}"
+    },
+    "bPath": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java",
+    "aPath": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java",
+    "bCommit": "bf580906",
+    "aCommit": "6d183bb4",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "PreparedUpdate < Foo > stmt = stmtb.prepare ( ) ;",
+            "type": "DELETE",
+            "lineNo": 26
+          },
+          {
+            "line": "stmt.getStatement ( ) ;",
+            "type": "DELETE",
+            "lineNo": 27
+          }
+        ],
+        "type": "DELETE",
+        "sourceElements": [
+          {
+            "type": "CtLocalVariable",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate stmt"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.BaseCoreTest$Foo"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder.prepare()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder stmtb"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder.prepare()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.j256.ormlite.stmt.PreparedStmt.getStatement()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate stmt"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.j256.ormlite.stmt.PreparedStmt.getStatement()"
+          }
+        ],
+        "targetElements": []
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "success",
+      "error_lines": null
+    },
+    "repair_type": "coverage loss fix",
+    "coverage_repair_stats": "partial_coverage_fix",
+    "mutation_repair_stats": "partial_mutation_fix",
+    "coverage_loss": true,
+    "mutation_loss": true,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": 0.8,
+      "repaired_line_coverage": 0.8,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": 0.5,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": 0.6666666666666661,
+      "repaired_mutation_coverage": 0.6666666666666661
+    },
+    "focal_method": {
+      "focal_class_name": "com.j256.ormlite.stmt.UpdateBuilder",
+      "focal_method_name": "prepare",
+      "a_focal_method_code": {
+        "startLine": 42,
+        "endLine": 53,
+        "code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+        "fullName": "com.j256.ormlite.stmt.UpdateBuilder.updateColumnValue(String,Object)",
+        "simpleName": "updateColumnValue",
+        "className": "com.j256.ormlite.stmt.UpdateBuilder"
+      },
+      "b_focal_method_code": {
+        "startLine": 34,
+        "endLine": 40,
+        "code": "/**\n\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change\n\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution.\n\t */\n\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+        "fullName": "com.j256.ormlite.stmt.UpdateBuilder.prepare()",
+        "simpleName": "prepare",
+        "className": "com.j256.ormlite.stmt.UpdateBuilder"
+      },
+      "a_focal_method_path": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java",
+      "b_focal_method_path": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java",
+      "aCommit": "6d183bb4",
+      "bCommit": "bf580906",
+      "a_commit_path": "../../output/j256/ormlite-core/codeMining/commits/6d183bb4-0",
+      "b_commit_path": "../../output/j256/ormlite-core/codeMining/commits/bf580906-6d183bb4",
+      "line_mapping": [
+        {
+          "b_line": 34,
+          "a_line": 42,
+          "content": "/**"
+        },
+        {
+          "b_line": 37,
+          "a_line": 45,
+          "content": "\t */"
+        },
+        {
+          "b_line": 40,
+          "a_line": 53,
+          "content": "\t}"
+        }
+      ],
+      "deleted_lines": [
+        {
+          "b_line": 35,
+          "content": "\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change"
+        },
+        {
+          "b_line": 36,
+          "content": "\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution."
+        },
+        {
+          "b_line": 38,
+          "content": "\tpublic PreparedUpdate<T> prepare() throws SQLException {"
+        },
+        {
+          "b_line": 39,
+          "content": "\t\treturn super.prepareStatement(null, false);"
+        }
+      ],
+      "added_lines": [
+        {
+          "a_line": 43,
+          "content": "\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'"
+        },
+        {
+          "a_line": 44,
+          "content": "\t * with the value escaped if necessary."
+        },
+        {
+          "a_line": 46,
+          "content": "\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {"
+        },
+        {
+          "a_line": 47,
+          "content": "\t\tFieldType fieldType = verifyColumnName(columnName);"
+        },
+        {
+          "a_line": 48,
+          "content": "\t\tif (fieldType.isForeignCollection()) {"
+        },
+        {
+          "a_line": 49,
+          "content": "\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);"
+        },
+        {
+          "a_line": 50,
+          "content": "\t\t}"
+        },
+        {
+          "a_line": 51,
+          "content": "\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));"
+        },
+        {
+          "a_line": 52,
+          "content": "\t\treturn this;"
+        }
+      ]
+    },
+    "aCommitTime": 1606929698,
+    "ID": "j256/ormlite-core:1",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "j256/ormlite-core",
+    "input": {
+      "test_code": "@Test public void testPrepareStatementUpdateValueString ( ) throws Exception { Dao < Foo , Integer > dao = createDao ( Foo.class , false ) ; UpdateBuilder < Foo , Integer > stmtb = new UpdateBuilder < Foo , Integer > ( databaseType , baseFooTableInfo , dao ) ; int idVal = 1312 ; stmtb.updateColumnValue ( Foo.ID_COLUMN_NAME , idVal ) ; PreparedUpdate < Foo > stmt = stmtb.prepare ( ) ; stmt.getStatement ( ) ; StringBuilder sb = new StringBuilder ( ) ; sb.append ( \"UPDATE \" ) ; databaseType.appendEscapedEntityName ( sb , baseFooTableInfo.getTableName ( ) ) ; sb.append ( \" SET \" ) ; databaseType.appendEscapedEntityName ( sb , Foo.ID_COLUMN_NAME ) ; sb.append ( \" = \" ) .append ( idVal ) .append ( ' ' ) ; assertEquals ( sb.toString ( ) , stmtb.prepareStatementString ( ) ) ; }",
+      "test_name": "com.j256.ormlite.stmt.UpdateBuilderTest.testPrepareStatementUpdateValueString()",
+      "project": "j256/ormlite-core",
+      "test_method": [
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned at least 1 result\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned at least 1 result\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned 0 results\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned 0 results\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt.getStatement ( ) ) ; [ADD] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ; [ADD] logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] connectionSource , connection , compiledStatement , preparedStmt.getStatement ( ) , objectCache ) ; [ADD] connectionSource , connection , compiledStatement , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Return the underlying SQL statement. * / public String getStatement ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/support/CompiledStatement.java",
+          "frequency": 1
+        }
+      ],
+      "focal_method": [],
+      "focal_file": [],
+      "high_frequency": [
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 2
+        }
+      ],
+      "all_diffs": [
+        {
+          "diff": "[ADD] / ** * Return the number of associated arguments with the statement. * / public int getNumArgs ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/PreparedStmt.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public RawResultsImpl ( ConnectionSource connectionSource , DatabaseConnection connection , String query , Class < ? > clazz , CompiledStatement compiledStmt , GenericRowMapper < T > rowMapper , ObjectCache objectCache ) [ADD] public RawResultsImpl ( ConnectionSource connectionSource , DatabaseConnection connection , Class < ? > clazz , CompiledStatement compiledStmt , GenericRowMapper < T > rowMapper , ObjectCache objectCache )",
+          "file": "src/main/java/com/j256/ormlite/stmt/RawResultsImpl.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] iterator = new SelectIterator < T , Void > ( clazz , null , rowMapper , connectionSource , connection , compiledStmt , query , objectCache ) ; [ADD] iterator = new SelectIterator < T , Void > ( clazz , null , rowMapper , connectionSource , connection , compiledStmt , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/RawResultsImpl.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] private final String statement ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] String statement , ObjectCache objectCache ) throws SQLException { [ADD] ObjectCache objectCache ) throws SQLException {",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] this.statement = statement ; if ( statement != null ) { logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , statement ) ; } [ADD] logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , compiledStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] if ( statement != null ) { logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ; } [ADD] logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned at least 1 result\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned at least 1 result\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned 0 results\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned 0 results\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt.getStatement ( ) ) ; [ADD] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ; [ADD] logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] connectionSource , connection , compiledStatement , preparedStmt.getStatement ( ) , objectCache ) ; [ADD] connectionSource , connection , compiledStatement , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] GenericRawResults < String[] > rawResults = new RawResultsImpl < String[] > ( connectionSource , connection , query , [ADD] GenericRawResults < String[] > rawResults = new RawResultsImpl < String[] > ( connectionSource , connection ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 2
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < Object[] > rawResults = new RawResultsImpl < Object[] > ( connectionSource , connection , query , [ADD] RawResultsImpl < Object[] > rawResults = new RawResultsImpl < Object[] > ( connectionSource , connection ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , Object[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , Object[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] return \"MappedStatement: \" + statement ; [ADD] return statement ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/mapped/BaseMappedStatement.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] @Override public int getNumArgs ( ) { if ( argHolders == null ) { return 0 ; } else { return argHolders.length ; } }",
+          "file": "src/main/java/com/j256/ormlite/stmt/mapped/MappedPreparedStmt.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Return the underlying SQL statement. * / public String getStatement ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/support/CompiledStatement.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 19,
+        "after_whitespace_filter": 19,
+        "matched_diffs": 7,
+        "test_method_count": 6,
+        "focal_file_count": 0,
+        "focal_method_count": 1,
+        "high_frequency_count": 1
+      },
+      "focal_method_info": {
+        "focal_method_changed": true,
+        "b_focal_method_code": "/**\n\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change\n\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution.\n\t */\n\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+        "a_focal_method_code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}"
+      },
+      "test_import": [
+        "import static org.junit.Assert.assertEquals;",
+        "import static org.junit.Assert.assertNotNull;",
+        "import static org.junit.Assert.assertNull;",
+        "import java.sql.SQLException;",
+        "import java.util.Date;",
+        "import org.junit.Test;",
+        "import com.j256.ormlite.dao.Dao;",
+        "import com.j256.ormlite.dao.ForeignCollection;",
+        "import com.j256.ormlite.field.DatabaseField;",
+        "import com.j256.ormlite.field.ForeignCollectionField;",
+        "import com.j256.ormlite.table.TableInfo;"
+      ],
+      "class_fields": [
+        "protected static class OurForeignCollection { public static final String FOOS_FIELD_NAME = \"foos\";",
+        "public static final String FOOS_FIELD_NAME = \"foos\";",
+        "int id;",
+        "String stuff;",
+        "ForeignCollection<OurForeign> foos;",
+        "protected static class OurForeign { @DatabaseField(generatedId = true) int id;",
+        "int id;",
+        "OurForeignCollection foreign;",
+        "protected static class UpdateDate { public static final String DATE_FIELD = \"date\";",
+        "public static final String DATE_FIELD = \"date\";",
+        "int id;",
+        "Date date;"
+      ],
+      "non_test_methods": [],
+      "prioritized_changes": [
+        "[<HUNK>][<DEL>]RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class ,[<ADD>]RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,[</HUNK>]",
+        "[<HUNK>][<DEL>]logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ;[<ADD>]logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]this.statement = statement ; if ( statement != null ) { logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , statement ) ; }[<ADD>]logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , compiledStmt ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]if ( statement != null ) { logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ; }[<ADD>]logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ;[</HUNK>]",
+        "[<HUNK>][<ADD>]@Override public int getNumArgs ( ) { if ( argHolders == null ) { return 0 ; } else { return argHolders.length ; } }[</HUNK>]"
+      ]
+    }
+  },
+  {
+    "name": "com.j256.ormlite.stmt.UpdateBuilderTest.testPrepareStatementUpdateValueNumber()",
+    "bSource": {
+      "startLine": 37,
+      "code": "@Test\n\tpublic void testPrepareStatementUpdateValueNumber() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 13123;\n\t\tstmtb.updateColumnValue(Foo.VAL_COLUMN_NAME, idVal);\n\t\tPreparedUpdate<Foo> stmt = stmtb.prepare();\n\t\tstmt.getStatement();\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.VAL_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}"
+    },
+    "aSource": {
+      "startLine": 35,
+      "code": "@Test\n\tpublic void testPrepareStatementUpdateValueNumber() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 13123;\n\t\tstmtb.updateColumnValue(Foo.VAL_COLUMN_NAME, idVal);\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.VAL_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}"
+    },
+    "bPath": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java",
+    "aPath": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java",
+    "bCommit": "bf580906",
+    "aCommit": "6d183bb4",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "PreparedUpdate < Foo > stmt = stmtb.prepare ( ) ;",
+            "type": "DELETE",
+            "lineNo": 43
+          },
+          {
+            "line": "stmt.getStatement ( ) ;",
+            "type": "DELETE",
+            "lineNo": 44
+          }
+        ],
+        "type": "DELETE",
+        "sourceElements": [
+          {
+            "type": "CtLocalVariable",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate stmt"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.BaseCoreTest$Foo"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder.prepare()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder stmtb"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.j256.ormlite.stmt.UpdateBuilder.prepare()"
+          },
+          {
+            "type": "CtInvocation",
+            "value": "com.j256.ormlite.stmt.PreparedStmt.getStatement()"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "com.j256.ormlite.stmt.PreparedUpdate stmt"
+          },
+          {
+            "type": "CtExecutableReference",
+            "value": "com.j256.ormlite.stmt.PreparedStmt.getStatement()"
+          }
+        ],
+        "targetElements": []
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "success",
+      "error_lines": null
+    },
+    "repair_type": "coverage loss fix",
+    "coverage_repair_stats": "partial_coverage_fix",
+    "mutation_repair_stats": "partial_mutation_fix",
+    "coverage_loss": true,
+    "mutation_loss": true,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": 0.8,
+      "repaired_line_coverage": 0.8,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": 0.5,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": 0.6666666666666661,
+      "repaired_mutation_coverage": 0.6666666666666661
+    },
+    "focal_method": {
+      "focal_class_name": "com.j256.ormlite.stmt.UpdateBuilder",
+      "focal_method_name": "prepare",
+      "a_focal_method_code": {
+        "startLine": 42,
+        "endLine": 53,
+        "code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+        "fullName": "com.j256.ormlite.stmt.UpdateBuilder.updateColumnValue(String,Object)",
+        "simpleName": "updateColumnValue",
+        "className": "com.j256.ormlite.stmt.UpdateBuilder"
+      },
+      "b_focal_method_code": {
+        "startLine": 34,
+        "endLine": 40,
+        "code": "/**\n\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change\n\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution.\n\t */\n\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+        "fullName": "com.j256.ormlite.stmt.UpdateBuilder.prepare()",
+        "simpleName": "prepare",
+        "className": "com.j256.ormlite.stmt.UpdateBuilder"
+      },
+      "a_focal_method_path": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java",
+      "b_focal_method_path": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java",
+      "aCommit": "6d183bb4",
+      "bCommit": "bf580906",
+      "a_commit_path": "../../output/j256/ormlite-core/codeMining/commits/6d183bb4-0",
+      "b_commit_path": "../../output/j256/ormlite-core/codeMining/commits/bf580906-6d183bb4",
+      "line_mapping": [
+        {
+          "b_line": 34,
+          "a_line": 42,
+          "content": "/**"
+        },
+        {
+          "b_line": 37,
+          "a_line": 45,
+          "content": "\t */"
+        },
+        {
+          "b_line": 40,
+          "a_line": 53,
+          "content": "\t}"
+        }
+      ],
+      "deleted_lines": [
+        {
+          "b_line": 35,
+          "content": "\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change"
+        },
+        {
+          "b_line": 36,
+          "content": "\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution."
+        },
+        {
+          "b_line": 38,
+          "content": "\tpublic PreparedUpdate<T> prepare() throws SQLException {"
+        },
+        {
+          "b_line": 39,
+          "content": "\t\treturn super.prepareStatement(null, false);"
+        }
+      ],
+      "added_lines": [
+        {
+          "a_line": 43,
+          "content": "\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'"
+        },
+        {
+          "a_line": 44,
+          "content": "\t * with the value escaped if necessary."
+        },
+        {
+          "a_line": 46,
+          "content": "\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {"
+        },
+        {
+          "a_line": 47,
+          "content": "\t\tFieldType fieldType = verifyColumnName(columnName);"
+        },
+        {
+          "a_line": 48,
+          "content": "\t\tif (fieldType.isForeignCollection()) {"
+        },
+        {
+          "a_line": 49,
+          "content": "\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);"
+        },
+        {
+          "a_line": 50,
+          "content": "\t\t}"
+        },
+        {
+          "a_line": 51,
+          "content": "\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));"
+        },
+        {
+          "a_line": 52,
+          "content": "\t\treturn this;"
+        }
+      ]
+    },
+    "aCommitTime": 1606929698,
+    "ID": "j256/ormlite-core:2",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "j256/ormlite-core",
+    "input": {
+      "test_code": "@Test public void testPrepareStatementUpdateValueNumber ( ) throws Exception { Dao < Foo , Integer > dao = createDao ( Foo.class , false ) ; UpdateBuilder < Foo , Integer > stmtb = new UpdateBuilder < Foo , Integer > ( databaseType , baseFooTableInfo , dao ) ; int idVal = 13123 ; stmtb.updateColumnValue ( Foo.VAL_COLUMN_NAME , idVal ) ; PreparedUpdate < Foo > stmt = stmtb.prepare ( ) ; stmt.getStatement ( ) ; StringBuilder sb = new StringBuilder ( ) ; sb.append ( \"UPDATE \" ) ; databaseType.appendEscapedEntityName ( sb , baseFooTableInfo.getTableName ( ) ) ; sb.append ( \" SET \" ) ; databaseType.appendEscapedEntityName ( sb , Foo.VAL_COLUMN_NAME ) ; sb.append ( \" = \" ) .append ( idVal ) .append ( ' ' ) ; assertEquals ( sb.toString ( ) , stmtb.prepareStatementString ( ) ) ; }",
+      "test_name": "com.j256.ormlite.stmt.UpdateBuilderTest.testPrepareStatementUpdateValueNumber()",
+      "project": "j256/ormlite-core",
+      "test_method": [
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned at least 1 result\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned at least 1 result\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned 0 results\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned 0 results\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt.getStatement ( ) ) ; [ADD] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ; [ADD] logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] connectionSource , connection , compiledStatement , preparedStmt.getStatement ( ) , objectCache ) ; [ADD] connectionSource , connection , compiledStatement , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Return the underlying SQL statement. * / public String getStatement ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/support/CompiledStatement.java",
+          "frequency": 1
+        }
+      ],
+      "focal_method": [],
+      "focal_file": [],
+      "high_frequency": [
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 2
+        }
+      ],
+      "all_diffs": [
+        {
+          "diff": "[ADD] / ** * Return the number of associated arguments with the statement. * / public int getNumArgs ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/PreparedStmt.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public RawResultsImpl ( ConnectionSource connectionSource , DatabaseConnection connection , String query , Class < ? > clazz , CompiledStatement compiledStmt , GenericRowMapper < T > rowMapper , ObjectCache objectCache ) [ADD] public RawResultsImpl ( ConnectionSource connectionSource , DatabaseConnection connection , Class < ? > clazz , CompiledStatement compiledStmt , GenericRowMapper < T > rowMapper , ObjectCache objectCache )",
+          "file": "src/main/java/com/j256/ormlite/stmt/RawResultsImpl.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] iterator = new SelectIterator < T , Void > ( clazz , null , rowMapper , connectionSource , connection , compiledStmt , query , objectCache ) ; [ADD] iterator = new SelectIterator < T , Void > ( clazz , null , rowMapper , connectionSource , connection , compiledStmt , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/RawResultsImpl.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] private final String statement ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] String statement , ObjectCache objectCache ) throws SQLException { [ADD] ObjectCache objectCache ) throws SQLException {",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] this.statement = statement ; if ( statement != null ) { logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , statement ) ; } [ADD] logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , compiledStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] if ( statement != null ) { logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ; } [ADD] logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/SelectIterator.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned at least 1 result\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned at least 1 result\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query-for-first of '{}' returned 0 results\" , preparedStmt.getStatement ( ) ) ; [ADD] logger.debug ( \"query-for-first of '{}' with {} args returned 0 results\" , preparedStmt , preparedStmt.getNumArgs ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt.getStatement ( ) ) ; [ADD] throw new SQLException ( \"No result found in queryForLong: \" + preparedStmt ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ; [ADD] logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] connectionSource , connection , compiledStatement , preparedStmt.getStatement ( ) , objectCache ) ; [ADD] connectionSource , connection , compiledStatement , objectCache ) ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] GenericRawResults < String[] > rawResults = new RawResultsImpl < String[] > ( connectionSource , connection , query , [ADD] GenericRawResults < String[] > rawResults = new RawResultsImpl < String[] > ( connectionSource , connection ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 2
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < Object[] > rawResults = new RawResultsImpl < Object[] > ( connectionSource , connection , query , [ADD] RawResultsImpl < Object[] > rawResults = new RawResultsImpl < Object[] > ( connectionSource , connection ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , Object[].class , [ADD] RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , Object[].class ,",
+          "file": "src/main/java/com/j256/ormlite/stmt/StatementExecutor.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] return \"MappedStatement: \" + statement ; [ADD] return statement ;",
+          "file": "src/main/java/com/j256/ormlite/stmt/mapped/BaseMappedStatement.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] @Override public int getNumArgs ( ) { if ( argHolders == null ) { return 0 ; } else { return argHolders.length ; } }",
+          "file": "src/main/java/com/j256/ormlite/stmt/mapped/MappedPreparedStmt.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Return the underlying SQL statement. * / public String getStatement ( ) ;",
+          "file": "src/main/java/com/j256/ormlite/support/CompiledStatement.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 19,
+        "after_whitespace_filter": 19,
+        "matched_diffs": 7,
+        "test_method_count": 6,
+        "focal_file_count": 0,
+        "focal_method_count": 1,
+        "high_frequency_count": 1
+      },
+      "focal_method_info": {
+        "focal_method_changed": true,
+        "b_focal_method_code": "/**\n\t * Build and return a prepared update that can be used by {@link Dao#update(PreparedUpdate)} method. If you change\n\t * the where or make other calls you will need to re-call this method to re-prepare the statement for execution.\n\t */\n\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+        "a_focal_method_code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}"
+      },
+      "test_import": [
+        "import static org.junit.Assert.assertEquals;",
+        "import static org.junit.Assert.assertNotNull;",
+        "import static org.junit.Assert.assertNull;",
+        "import java.sql.SQLException;",
+        "import java.util.Date;",
+        "import org.junit.Test;",
+        "import com.j256.ormlite.dao.Dao;",
+        "import com.j256.ormlite.dao.ForeignCollection;",
+        "import com.j256.ormlite.field.DatabaseField;",
+        "import com.j256.ormlite.field.ForeignCollectionField;",
+        "import com.j256.ormlite.table.TableInfo;"
+      ],
+      "class_fields": [
+        "protected static class OurForeignCollection { public static final String FOOS_FIELD_NAME = \"foos\";",
+        "public static final String FOOS_FIELD_NAME = \"foos\";",
+        "int id;",
+        "String stuff;",
+        "ForeignCollection<OurForeign> foos;",
+        "protected static class OurForeign { @DatabaseField(generatedId = true) int id;",
+        "int id;",
+        "OurForeignCollection foreign;",
+        "protected static class UpdateDate { public static final String DATE_FIELD = \"date\";",
+        "public static final String DATE_FIELD = \"date\";",
+        "int id;",
+        "Date date;"
+      ],
+      "non_test_methods": [],
+      "prioritized_changes": [
+        "[<HUNK>][<DEL>]RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , query , String[].class ,[<ADD>]RawResultsImpl < UO > rawResults = new RawResultsImpl < UO > ( connectionSource , connection , String[].class ,[</HUNK>]",
+        "[<HUNK>][<DEL>]logger.debug ( \"query of '{}' returned {} results\" , preparedStmt.getStatement ( ) , results.size ( ) ) ;[<ADD>]logger.debug ( \"query of '{}' with {} args returned {} results\" , preparedStmt , preparedStmt.getNumArgs ( ) , results.size ( ) ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]this.statement = statement ; if ( statement != null ) { logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , statement ) ; }[<ADD>]logger.debug ( \"starting iterator @{} for '{}'\" , hashCode ( ) , compiledStmt ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]if ( statement != null ) { logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ; }[<ADD>]logger.debug ( \"closed iterator @{} after {} rows\" , hashCode ( ) , rowC ) ;[</HUNK>]",
+        "[<HUNK>][<ADD>]@Override public int getNumArgs ( ) { if ( argHolders == null ) { return 0 ; } else { return argHolders.length ; } }[</HUNK>]"
+      ]
+    }
+  },
+  {
+    "name": "com.j256.ormlite.table.DatabaseTableConfigTest.testFieldConfigConstructor()",
+    "bSource": {
+      "startLine": 80,
+      "code": "@Test\n\tpublic void testFieldConfigConstructor() throws SQLException {\n\t\tList<DatabaseFieldConfig> fieldConfigs = new ArrayList<DatabaseFieldConfig>();\n\t\tfieldConfigs.add(new DatabaseFieldConfig(\"stuff\", null, DataType.UNKNOWN, \"\", 0, true, false, false, null,\n\t\t\t\tfalse, null, false, null, false, null, false, null, null, false,\n\t\t\t\tDatabaseFieldConfig.NO_MAX_FOREIGN_AUTO_REFRESH_LEVEL_SPECIFIED, 0));\n\t\tDatabaseTableConfig<DatabaseTableAnno> dbTableConf =\n\t\t\t\tnew DatabaseTableConfig<DatabaseTableAnno>(DatabaseTableAnno.class, fieldConfigs);\n\t\tassertEquals(DatabaseTableAnno.class, dbTableConf.getDataClass());\n\t\tassertEquals(TABLE_NAME, dbTableConf.getTableName());\n\t\tdbTableConf.extractFieldTypes(connectionSource);\n\t\tFieldType[] fieldTypes = dbTableConf.getFieldTypes(databaseType);\n\t\tassertEquals(1, fieldTypes.length);\n\t\tassertEquals(\"stuff\", fieldTypes[0].getColumnName());\n\t}"
+    },
+    "aSource": {
+      "startLine": 80,
+      "code": "@Test\n\tpublic void testFieldConfigConstructor() throws SQLException {\n\t\tList<DatabaseFieldConfig> fieldConfigs = new ArrayList<DatabaseFieldConfig>();\n\t\tfieldConfigs.add(new DatabaseFieldConfig(\"stuff\", null, DataType.UNKNOWN, \"\", 0, true, false, false, null,\n\t\t\t\tfalse, null, false, null, false, null, false, null, null, false,\n\t\t\t\tDatabaseFieldConfig.NO_MAX_FOREIGN_AUTO_REFRESH_LEVEL_SPECIFIED, 0));\n\t\tDatabaseTableConfig<DatabaseTableAnno> dbTableConf =\n\t\t\t\tnew DatabaseTableConfig<DatabaseTableAnno>(databaseType, DatabaseTableAnno.class, fieldConfigs);\n\t\tassertEquals(DatabaseTableAnno.class, dbTableConf.getDataClass());\n\t\tassertEquals(TABLE_NAME, dbTableConf.getTableName());\n\t\tdbTableConf.extractFieldTypes(connectionSource);\n\t\tFieldType[] fieldTypes = dbTableConf.getFieldTypes(databaseType);\n\t\tassertEquals(1, fieldTypes.length);\n\t\tassertEquals(\"stuff\", fieldTypes[0].getColumnName());\n\t}"
+    },
+    "bPath": "src/test/java/com/j256/ormlite/table/DatabaseTableConfigTest.java",
+    "aPath": "src/test/java/com/j256/ormlite/table/DatabaseTableConfigTest.java",
+    "bCommit": "2163945b",
+    "aCommit": "22ea981c",
+    "hunks": [
+      {
+        "sourceChanges": [
+          {
+            "line": "new DatabaseTableConfig < DatabaseTableAnno > ( DatabaseTableAnno.class , fieldConfigs ) ;",
+            "type": "DELETE",
+            "lineNo": 87
+          }
+        ],
+        "targetChanges": [
+          {
+            "line": "new DatabaseTableConfig < DatabaseTableAnno > ( databaseType , DatabaseTableAnno.class , fieldConfigs ) ;",
+            "type": "ADD",
+            "lineNo": 87
+          }
+        ],
+        "type": "MODIFY",
+        "sourceElements": [
+          {
+            "type": "CtConstructorCall",
+            "value": "com.j256.ormlite.table.DatabaseTableConfig.DatabaseTableConfig(Class,List)"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.table.DatabaseTableConfig"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.table.DatabaseTableConfigTest$DatabaseTableAnno"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "java.lang.Class class"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "java.util.List fieldConfigs"
+          }
+        ],
+        "targetElements": [
+          {
+            "type": "CtConstructorCall",
+            "value": "com.j256.ormlite.table.DatabaseTableConfig.DatabaseTableConfig(DatabaseType,Class,List)"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.table.DatabaseTableConfig"
+          },
+          {
+            "type": "CtTypeReference",
+            "value": "com.j256.ormlite.table.DatabaseTableConfigTest$DatabaseTableAnno"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "com.j256.ormlite.db.DatabaseType databaseType"
+          },
+          {
+            "type": "CtFieldRead",
+            "value": "java.lang.Class class"
+          },
+          {
+            "type": "CtVariableRead",
+            "value": "java.util.List fieldConfigs"
+          }
+        ]
+      }
+    ],
+    "refactorings": [],
+    "verdict": {
+      "status": "compile_error",
+      "error_lines": [
+        87
+      ]
+    },
+    "repair_type": "compile error fix",
+    "coverage_repair_stats": "coverage_fix",
+    "mutation_repair_stats": "mutation_fix",
+    "coverage_loss": false,
+    "mutation_loss": false,
+    "method_coverage_stats": {
+      "baseline_line_coverage": 0.6666666666666661,
+      "broken_line_coverage": null,
+      "repaired_line_coverage": 0.6666666666666661,
+      "baseline_branch_coverage": 0.5,
+      "broken_branch_coverage": null,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": null,
+      "repaired_mutation_coverage": 1.0
+    },
+    "focal_method": {
+      "focal_class_name": "com.j256.ormlite.table.DatabaseTableConfig",
+      "focal_method_name": "getFieldTypes",
+      "a_focal_method_code": {
+        "startLine": 134,
+        "endLine": 142,
+        "code": "/**\n\t * Return the field types associated with this configuration.\n\t */\n\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+        "fullName": "com.j256.ormlite.table.DatabaseTableConfig.getFieldTypes(DatabaseType)",
+        "simpleName": "getFieldTypes",
+        "className": "com.j256.ormlite.table.DatabaseTableConfig"
+      },
+      "b_focal_method_code": {
+        "startLine": 122,
+        "endLine": 130,
+        "code": "/**\n\t * Return the field types associated with this configuration.\n\t */\n\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+        "fullName": "com.j256.ormlite.table.DatabaseTableConfig.getFieldTypes(DatabaseType)",
+        "simpleName": "getFieldTypes",
+        "className": "com.j256.ormlite.table.DatabaseTableConfig"
+      },
+      "a_focal_method_path": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+      "b_focal_method_path": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+      "aCommit": "22ea981c",
+      "bCommit": "2163945b",
+      "a_commit_path": "../../output/j256/ormlite-core/codeMining/commits/22ea981c-0",
+      "b_commit_path": "../../output/j256/ormlite-core/codeMining/commits/2163945b-22ea981c",
+      "line_mapping": [
+        {
+          "b_line": 122,
+          "a_line": 134,
+          "content": "/**"
+        },
+        {
+          "b_line": 123,
+          "a_line": 135,
+          "content": "\t * Return the field types associated with this configuration."
+        },
+        {
+          "b_line": 124,
+          "a_line": 136,
+          "content": "\t */"
+        },
+        {
+          "b_line": 125,
+          "a_line": 137,
+          "content": "\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {"
+        },
+        {
+          "b_line": 126,
+          "a_line": 138,
+          "content": "\t\tif (fieldTypes == null) {"
+        },
+        {
+          "b_line": 127,
+          "a_line": 139,
+          "content": "\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");"
+        },
+        {
+          "b_line": 128,
+          "a_line": 140,
+          "content": "\t\t}"
+        },
+        {
+          "b_line": 129,
+          "a_line": 141,
+          "content": "\t\treturn fieldTypes;"
+        },
+        {
+          "b_line": 130,
+          "a_line": 142,
+          "content": "\t}"
+        }
+      ],
+      "deleted_lines": [],
+      "added_lines": []
+    },
+    "aCommitTime": 1519057051,
+    "ID": "j256/ormlite-core:0",
+    "trivial": NaN,
+    "src_java_version": 8,
+    "tgt_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_maven_version": "3.9.6",
+    "project": "j256/ormlite-core",
+    "input": {
+      "test_code": "@Test public void testFieldConfigConstructor ( ) throws SQLException { List < DatabaseFieldConfig > fieldConfigs = new ArrayList < DatabaseFieldConfig > ( ) ; fieldConfigs.add ( new DatabaseFieldConfig ( \"stuff\" , null , DataType.UNKNOWN , \"\" , 0 , true , false , false , null , false , null , false , null , false , null , false , null , null , false , DatabaseFieldConfig.NO_MAX_FOREIGN_AUTO_REFRESH_LEVEL_SPECIFIED , 0 ) ) ; DatabaseTableConfig < DatabaseTableAnno > dbTableConf = new DatabaseTableConfig < DatabaseTableAnno > ( DatabaseTableAnno.class , fieldConfigs ) ; assertEquals ( DatabaseTableAnno.class , dbTableConf.getDataClass ( ) ) ; assertEquals ( TABLE_NAME , dbTableConf.getTableName ( ) ) ; dbTableConf.extractFieldTypes ( connectionSource ) ; FieldType[] fieldTypes = dbTableConf.getFieldTypes ( databaseType ) ; assertEquals ( 1 , fieldTypes.length ) ; assertEquals ( \"stuff\" , fieldTypes[0].getColumnName ( ) ) ; }",
+      "test_name": "com.j256.ormlite.table.DatabaseTableConfigTest.testFieldConfigConstructor()",
+      "project": "j256/ormlite-core",
+      "test_method": [
+        {
+          "diff": "[DELETE] map.put ( fieldType.getColumnName ( ) .toLowerCase ( Locale.ENGLISH ) , fieldType ) ; [ADD] map.put ( databaseType.downCaseString ( fieldType.getColumnName ( ) , true ) , fieldType ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableInfo.java",
+          "frequency": 1
+        }
+      ],
+      "focal_method": [],
+      "focal_file": [
+        {
+          "diff": "[ADD] // optional database type , may be null private DatabaseType databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public DatabaseTableConfig ( Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( dataClass ) , fieldConfigs ) ; [ADD] public DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( databaseType , dataClass ) , fieldConfigs ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] private DatabaseTableConfig ( Class < T > dataClass , String tableName , FieldType[] fieldTypes ) { [ADD] private DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , String tableName , FieldType[] fieldTypes ) { // NOTE : databaseType may be null this.databaseType = databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] tableName = extractTableName ( dataClass ) ; [ADD] tableName = extractTableName ( databaseType , dataClass ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Optional setting. This is here so we can control the lowercasing of the table name in the database - type. * / public void setDatabaseType ( DatabaseType databaseType ) { this.databaseType = databaseType ; }",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] String tableName = extractTableName ( clazz ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] String tableName = extractTableName ( databaseType , clazz ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] return new DatabaseTableConfig < T > ( clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ; [ADD] return new DatabaseTableConfig < T > ( databaseType , clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public static < T > String extractTableName ( Class < T > clazz ) { [ADD] public static < T > String extractTableName ( DatabaseType databaseType , Class < T > clazz ) {",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] name = clazz.getSimpleName ( ) .toLowerCase ( Locale.ENGLISH ) ; [ADD] if ( databaseType == null ) { // database - type is optional so if it is not specified we just use english name = clazz.getSimpleName ( ) .toLowerCase ( Locale.ENGLISH ) ; } else { name = databaseType.downCaseString ( clazz.getSimpleName ( ) , true ) ; }",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        }
+      ],
+      "high_frequency": [],
+      "all_diffs": [
+        {
+          "diff": "[ADD] return upCaseString ( entityName , true ) ; } @Override public String upCaseString ( String string , boolean forceEnglish ) { if ( forceEnglish ) { / * * We are forcing the ENGLISH locale because of language capitalization issues. In a couple of languages , * the capital version of many letters is a letter that is incompatible with many SQL libraries. For * example , in Turkish ( Locale.forLanguageTag ( \"tr-TR\" ) ) , \"i\".toUpperCase ( ) returns \"İ\" which is a dotted * uppercase i. * / return string.toUpperCase ( Locale.ENGLISH ) ; } else { / * * When we are trying to match certain methods , sometimes we need to check for the default locale case and * then check for the English variant. * / return string.toUpperCase ( ) ; } } @Override public String downCaseString ( String string , boolean forceEnglish ) {",
+          "file": "src/main/java/com/j256/ormlite/db/BaseDatabaseType.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] * We are forcing the ENGLISH locale because of locale capitalization issues. In a couple of languages , the * capital version of many letters is a letter that is incompatible with many SQL libraries. For example , in * Turkish ( Locale.forLanguageTag ( \"tr-TR\" ) ) , \"i\".toUpperCase ( ) returns \"İ\" which is a dotted uppercase i. [ADD] * See upCaseString ( ... ) for details about the complexities here.",
+          "file": "src/main/java/com/j256/ormlite/db/BaseDatabaseType.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] return entityName.toUpperCase ( Locale.ENGLISH ) ; [ADD] if ( forceEnglish ) { return string.toLowerCase ( Locale.ENGLISH ) ; } else { return string.toLowerCase ( ) ; }",
+          "file": "src/main/java/com/j256/ormlite/db/BaseDatabaseType.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] * Returns the uppercase version of a string for generating and matching fields and methods. This is here in case * someone wants to override the behavior of the default locale because of localization issues around * capitalization. * * @param string * String to up case. * @param forceEnglish * Set to true to use the English locale otherwise false to use the default local one. * / public String upCaseString ( String string , boolean forceEnglish ) ; / ** * Returns the lowercase version of a string for generating and fields and methods. This is here in case someone * wants to override the behavior of the default locale because of localization issues around capitalization. * * @param string * String to down case. * @param forceEnglish * Set to true to use the English locale otherwise false to use the default local one. * / public String downCaseString ( String string , boolean forceEnglish ) ; / **",
+          "file": "src/main/java/com/j256/ormlite/db/DatabaseType.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public static Method findGetMethod ( Field field , boolean throwExceptions ) throws IllegalArgumentException { Method fieldGetMethod ; if ( Locale.ENGLISH.equals ( Locale.getDefault ( ) ) ) { fieldGetMethod = findMethodFromNames ( field , true , throwExceptions , methodFromField ( field , \"get\" , null ) , methodFromField ( field , \"is\" , null ) ) ; } else { fieldGetMethod = findMethodFromNames ( field , true , throwExceptions , methodFromField ( field , \"get\" , null ) , methodFromField ( field , \"get\" , Locale.ENGLISH ) , methodFromField ( field , \"is\" , null ) , methodFromField ( field , \"is\" , Locale.ENGLISH ) ) ; } [ADD] public static Method findGetMethod ( Field field , DatabaseType databaseType , boolean throwExceptions ) throws IllegalArgumentException { Method fieldGetMethod = findMethodFromNames ( field , true , throwExceptions , methodFromField ( field , \"get\" , databaseType , true ) , methodFromField ( field , \"get\" , databaseType , false ) , methodFromField ( field , \"is\" , databaseType , true ) , methodFromField ( field , \"is\" , databaseType , false ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/field/DatabaseFieldConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public static Method findSetMethod ( Field field , boolean throwExceptions ) throws IllegalArgumentException { Method fieldSetMethod ; if ( Locale.ENGLISH.equals ( Locale.getDefault ( ) ) ) { fieldSetMethod = findMethodFromNames ( field , false , throwExceptions , methodFromField ( field , \"set\" , null ) ) ; } else { fieldSetMethod = findMethodFromNames ( field , false , throwExceptions , methodFromField ( field , \"set\" , null ) , methodFromField ( field , \"set\" , Locale.ENGLISH ) ) ; } [ADD] public static Method findSetMethod ( Field field , DatabaseType databaseType , boolean throwExceptions ) throws IllegalArgumentException { Method fieldSetMethod = findMethodFromNames ( field , false , throwExceptions , methodFromField ( field , \"set\" , databaseType , true ) , methodFromField ( field , \"set\" , databaseType , false ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/field/DatabaseFieldConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] private static String methodFromField ( Field field , String prefix , Locale locale ) { [ADD] private static String methodFromField ( Field field , String prefix , DatabaseType databaseType , boolean forceEnglish ) {",
+          "file": "src/main/java/com/j256/ormlite/field/DatabaseFieldConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] if ( locale == null ) { // NOTE : this is not an entity to be capitalized with the database type , we are using default locale here start = start.toUpperCase ( ) ; } else { start = start.toUpperCase ( locale ) ; } [ADD] start = databaseType.upCaseString ( start , forceEnglish ) ;",
+          "file": "src/main/java/com/j256/ormlite/field/DatabaseFieldConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] this.fieldGetMethod = DatabaseFieldConfig.findGetMethod ( field , true ) ; this.fieldSetMethod = DatabaseFieldConfig.findSetMethod ( field , true ) ; [ADD] this.fieldGetMethod = DatabaseFieldConfig.findGetMethod ( field , databaseType , true ) ; this.fieldSetMethod = DatabaseFieldConfig.findSetMethod ( field , databaseType , true ) ;",
+          "file": "src/main/java/com/j256/ormlite/field/FieldType.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] config.setUseGetSet ( DatabaseFieldConfig.findGetMethod ( field , false ) != null && DatabaseFieldConfig.findSetMethod ( field , false ) != null ) ; [ADD] config.setUseGetSet ( DatabaseFieldConfig.findGetMethod ( field , databaseType , false ) != null && DatabaseFieldConfig.findSetMethod ( field , databaseType , false ) != null ) ;",
+          "file": "src/main/java/com/j256/ormlite/misc/JavaxPersistenceImpl.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] // optional database type , may be null private DatabaseType databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public DatabaseTableConfig ( Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( dataClass ) , fieldConfigs ) ; [ADD] public DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( databaseType , dataClass ) , fieldConfigs ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] private DatabaseTableConfig ( Class < T > dataClass , String tableName , FieldType[] fieldTypes ) { [ADD] private DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , String tableName , FieldType[] fieldTypes ) { // NOTE : databaseType may be null this.databaseType = databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] tableName = extractTableName ( dataClass ) ; [ADD] tableName = extractTableName ( databaseType , dataClass ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] / ** * Optional setting. This is here so we can control the lowercasing of the table name in the database - type. * / public void setDatabaseType ( DatabaseType databaseType ) { this.databaseType = databaseType ; }",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] String tableName = extractTableName ( clazz ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] String tableName = extractTableName ( databaseType , clazz ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] return new DatabaseTableConfig < T > ( clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ; [ADD] return new DatabaseTableConfig < T > ( databaseType , clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] public static < T > String extractTableName ( Class < T > clazz ) { [ADD] public static < T > String extractTableName ( DatabaseType databaseType , Class < T > clazz ) {",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] name = clazz.getSimpleName ( ) .toLowerCase ( Locale.ENGLISH ) ; [ADD] if ( databaseType == null ) { // database - type is optional so if it is not specified we just use english name = clazz.getSimpleName ( ) .toLowerCase ( Locale.ENGLISH ) ; } else { name = databaseType.downCaseString ( clazz.getSimpleName ( ) , true ) ; }",
+          "file": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] private final DatabaseType databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableInfo.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] this.databaseType = databaseType ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableInfo.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] map.put ( fieldType.getColumnName ( ) .toLowerCase ( Locale.ENGLISH ) , fieldType ) ; [ADD] map.put ( databaseType.downCaseString ( fieldType.getColumnName ( ) , true ) , fieldType ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableInfo.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] FieldType fieldType = fieldNameMap.get ( columnName.toLowerCase ( Locale.ENGLISH ) ) ; [ADD] FieldType fieldType = fieldNameMap.get ( databaseType.downCaseString ( columnName , true ) ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableInfo.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[DELETE] String tableName = DatabaseTableConfig.extractTableName ( dataClass ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableUtils.java",
+          "frequency": 1
+        },
+        {
+          "diff": "[ADD] String tableName = DatabaseTableConfig.extractTableName ( databaseType , dataClass ) ;",
+          "file": "src/main/java/com/j256/ormlite/table/TableUtils.java",
+          "frequency": 1
+        }
+      ],
+      "classification_statistics": {
+        "total_diffs": 26,
+        "after_whitespace_filter": 26,
+        "matched_diffs": 11,
+        "test_method_count": 1,
+        "focal_file_count": 10,
+        "focal_method_count": 0,
+        "high_frequency_count": 0
+      },
+      "focal_method_info": {
+        "focal_method_changed": false,
+        "b_focal_method_code": "/**\n\t * Return the field types associated with this configuration.\n\t */\n\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+        "a_focal_method_code": "/**\n\t * Return the field types associated with this configuration.\n\t */\n\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}"
+      },
+      "test_import": [
+        "import static org.easymock.EasyMock.createMock;",
+        "import static org.easymock.EasyMock.expect;",
+        "import static org.easymock.EasyMock.replay;",
+        "import static org.junit.Assert.assertEquals;",
+        "import static org.junit.Assert.assertTrue;",
+        "import static org.junit.Assert.fail;",
+        "import java.sql.SQLException;",
+        "import java.util.ArrayList;",
+        "import java.util.List;",
+        "import javax.persistence.Entity;",
+        "import org.junit.Test;",
+        "import com.j256.ormlite.db.BaseDatabaseType;",
+        "import com.j256.ormlite.db.DatabaseType;",
+        "import com.j256.ormlite.field.DataType;",
+        "import com.j256.ormlite.field.DatabaseField;",
+        "import com.j256.ormlite.field.DatabaseFieldConfig;",
+        "import com.j256.ormlite.field.FieldType;",
+        "import com.j256.ormlite.support.ConnectionSource;"
+      ],
+      "class_fields": [
+        "private static final String TABLE_NAME = \"sometable\";",
+        "private final DatabaseType databaseType = new StubDatabaseType();",
+        "private final ConnectionSource connectionSource;",
+        "protected static class DatabaseTableAnno { @DatabaseField public String stuff;",
+        "public String stuff;",
+        "protected static class EntityAnno { @DatabaseField public String stuff;",
+        "public String stuff;",
+        "protected static class NoFields { public String stuff;",
+        "public String stuff;",
+        "private static class StubDatabaseType extends BaseDatabaseType { @Override public String getDriverClassName() { return \"foo.bar.baz\";",
+        "protected static class Base { @DatabaseField(id = true) int id;",
+        "int id;",
+        "protected static class Sub extends Base { @DatabaseField String stuff;",
+        "String stuff;",
+        "protected static class BaseWithoutAnno { int id;",
+        "int id;",
+        "protected static class SubWithoutAnno extends BaseWithoutAnno { String stuff;",
+        "String stuff;"
+      ],
+      "non_test_methods": [
+        {
+          "name": "getDriverClassName",
+          "signature": "public String getDriverClassName()",
+          "annotations": [
+            "@Override"
+          ],
+          "code": "@Override\n\t\tpublic String getDriverClassName() {\n\t\t\treturn \"foo.bar.baz\";\n\t\t}"
+        },
+        {
+          "name": "getDatabaseName",
+          "signature": "public String getDatabaseName()",
+          "annotations": [
+            "@Override"
+          ],
+          "code": "@Override\n\t\tpublic String getDatabaseName() {\n\t\t\treturn \"fake\";\n\t\t}"
+        },
+        {
+          "name": "isDatabaseUrlThisType",
+          "signature": "public boolean isDatabaseUrlThisType(String url, String dbTypePart)",
+          "annotations": [
+            "@Override"
+          ],
+          "code": "@Override\n\t\tpublic boolean isDatabaseUrlThisType(String url, String dbTypePart) {\n\t\t\treturn false;\n\t\t}"
+        }
+      ],
+      "prioritized_changes": [
+        "[<HUNK>][<DEL>]return new DatabaseTableConfig < T > ( clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ;[<ADD>]return new DatabaseTableConfig < T > ( databaseType , clazz , tableName , extractFieldTypes ( connectionSource , clazz , tableName ) ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]public DatabaseTableConfig ( Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( dataClass ) , fieldConfigs ) ;[<ADD>]public DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , List < DatabaseFieldConfig > fieldConfigs ) { this ( dataClass , extractTableName ( databaseType , dataClass ) , fieldConfigs ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]private DatabaseTableConfig ( Class < T > dataClass , String tableName , FieldType[] fieldTypes ) {[<ADD>]private DatabaseTableConfig ( DatabaseType databaseType , Class < T > dataClass , String tableName , FieldType[] fieldTypes ) { // NOTE : databaseType may be null this.databaseType = databaseType ;[</HUNK>]",
+        "[<HUNK>][<ADD>]String tableName = DatabaseTableConfig.extractTableName ( databaseType , dataClass ) ;[</HUNK>]",
+        "[<HUNK>][<DEL>]String tableName = DatabaseTableConfig.extractTableName ( dataClass ) ;[</HUNK>]"
+      ]
+    }
+  }
+]

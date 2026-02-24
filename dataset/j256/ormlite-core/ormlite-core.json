@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "repo_name": "j256/ormlite-core",
+    "commit_date": "2020-12-02 17:21:38+00:00",
+    "commit_src": "bf580906",
+    "commit_tgt": "6d183bb4",
+    "changed_test": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java#testPrepareStatementUpdateValueString",
+    "changed_prod": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java#prepare",
+    "test_code_src": "@Test\n\tpublic void testPrepareStatementUpdateValueString() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 1312;\n\t\tstmtb.updateColumnValue(Foo.ID_COLUMN_NAME, idVal);\n\t\tPreparedUpdate<Foo> stmt = stmtb.prepare();\n\t\tstmt.getStatement();\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.ID_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}",
+    "test_code_tgt": "@Test\n\tpublic void testPrepareStatementUpdateValueString() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 1312;\n\t\tstmtb.updateColumnValue(Foo.ID_COLUMN_NAME, idVal);\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.ID_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}",
+    "prod_code_src": "\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+    "prod_code_tgt": "\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+    "test_id": 1,
+    "src_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_java_version": 8,
+    "tgt_maven_version": "3.9.6",
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": 0.8,
+      "repaired_line_coverage": 0.8,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": 0.5,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": 0.6666666666666661,
+      "repaired_mutation_coverage": 0.6666666666666661
+    },
+    "a_focal_method_code": {
+      "startLine": 42,
+      "endLine": 53,
+      "code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+      "fullName": "com.j256.ormlite.stmt.UpdateBuilder.updateColumnValue(String,Object)",
+      "simpleName": "updateColumnValue",
+      "className": "com.j256.ormlite.stmt.UpdateBuilder"
+    }
+  },
+  {
+    "id": 2,
+    "repo_name": "j256/ormlite-core",
+    "commit_date": "2020-12-02 17:21:38+00:00",
+    "commit_src": "bf580906",
+    "commit_tgt": "6d183bb4",
+    "changed_test": "src/test/java/com/j256/ormlite/stmt/UpdateBuilderTest.java#testPrepareStatementUpdateValueNumber",
+    "changed_prod": "src/main/java/com/j256/ormlite/stmt/UpdateBuilder.java#prepare",
+    "test_code_src": "@Test\n\tpublic void testPrepareStatementUpdateValueNumber() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 13123;\n\t\tstmtb.updateColumnValue(Foo.VAL_COLUMN_NAME, idVal);\n\t\tPreparedUpdate<Foo> stmt = stmtb.prepare();\n\t\tstmt.getStatement();\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.VAL_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}",
+    "test_code_tgt": "@Test\n\tpublic void testPrepareStatementUpdateValueNumber() throws Exception {\n\t\tDao<Foo, Integer> dao = createDao(Foo.class, false);\n\t\tUpdateBuilder<Foo, Integer> stmtb = new UpdateBuilder<Foo, Integer>(databaseType, baseFooTableInfo, dao);\n\t\tint idVal = 13123;\n\t\tstmtb.updateColumnValue(Foo.VAL_COLUMN_NAME, idVal);\n\t\tStringBuilder sb = new StringBuilder();\n\t\tsb.append(\"UPDATE \");\n\t\tdatabaseType.appendEscapedEntityName(sb, baseFooTableInfo.getTableName());\n\t\tsb.append(\" SET \");\n\t\tdatabaseType.appendEscapedEntityName(sb, Foo.VAL_COLUMN_NAME);\n\t\tsb.append(\" = \").append(idVal).append(' ');\n\t\tassertEquals(sb.toString(), stmtb.prepareStatementString());\n\t}",
+    "prod_code_src": "\tpublic PreparedUpdate<T> prepare() throws SQLException {\n\t\treturn super.prepareStatement(null, false);\n\t}",
+    "prod_code_tgt": "\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+    "test_id": 2,
+    "src_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_java_version": 8,
+    "tgt_maven_version": "3.9.6",
+    "method_coverage_stats": {
+      "baseline_line_coverage": 1.0,
+      "broken_line_coverage": 0.8,
+      "repaired_line_coverage": 0.8,
+      "baseline_branch_coverage": null,
+      "broken_branch_coverage": 0.5,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": 0.6666666666666661,
+      "repaired_mutation_coverage": 0.6666666666666661
+    },
+    "a_focal_method_code": {
+      "startLine": 42,
+      "endLine": 53,
+      "code": "/**\n\t * Add a column to be set to a value for UPDATE statements. This will generate something like columnName = 'value'\n\t * with the value escaped if necessary.\n\t */\n\tpublic UpdateBuilder<T, ID> updateColumnValue(String columnName, Object value) throws SQLException {\n\t\tFieldType fieldType = verifyColumnName(columnName);\n\t\tif (fieldType.isForeignCollection()) {\n\t\t\tthrow new SQLException(\"Can't update foreign colletion field: \" + columnName);\n\t\t}\n\t\taddUpdateColumnToList(columnName, new SetValue(columnName, fieldType, value));\n\t\treturn this;\n\t}",
+      "fullName": "com.j256.ormlite.stmt.UpdateBuilder.updateColumnValue(String,Object)",
+      "simpleName": "updateColumnValue",
+      "className": "com.j256.ormlite.stmt.UpdateBuilder"
+    }
+  },
+  {
+    "id": 0,
+    "repo_name": "j256/ormlite-core",
+    "commit_date": "2018-02-19 16:17:31+00:00",
+    "commit_src": "2163945b",
+    "commit_tgt": "22ea981c",
+    "changed_test": "src/test/java/com/j256/ormlite/table/DatabaseTableConfigTest.java#testFieldConfigConstructor",
+    "changed_prod": "src/main/java/com/j256/ormlite/table/DatabaseTableConfig.java#getFieldTypes",
+    "test_code_src": "@Test\n\tpublic void testFieldConfigConstructor() throws SQLException {\n\t\tList<DatabaseFieldConfig> fieldConfigs = new ArrayList<DatabaseFieldConfig>();\n\t\tfieldConfigs.add(new DatabaseFieldConfig(\"stuff\", null, DataType.UNKNOWN, \"\", 0, true, false, false, null,\n\t\t\t\tfalse, null, false, null, false, null, false, null, null, false,\n\t\t\t\tDatabaseFieldConfig.NO_MAX_FOREIGN_AUTO_REFRESH_LEVEL_SPECIFIED, 0));\n\t\tDatabaseTableConfig<DatabaseTableAnno> dbTableConf =\n\t\t\t\tnew DatabaseTableConfig<DatabaseTableAnno>(DatabaseTableAnno.class, fieldConfigs);\n\t\tassertEquals(DatabaseTableAnno.class, dbTableConf.getDataClass());\n\t\tassertEquals(TABLE_NAME, dbTableConf.getTableName());\n\t\tdbTableConf.extractFieldTypes(connectionSource);\n\t\tFieldType[] fieldTypes = dbTableConf.getFieldTypes(databaseType);\n\t\tassertEquals(1, fieldTypes.length);\n\t\tassertEquals(\"stuff\", fieldTypes[0].getColumnName());\n\t}",
+    "test_code_tgt": "@Test\n\tpublic void testFieldConfigConstructor() throws SQLException {\n\t\tList<DatabaseFieldConfig> fieldConfigs = new ArrayList<DatabaseFieldConfig>();\n\t\tfieldConfigs.add(new DatabaseFieldConfig(\"stuff\", null, DataType.UNKNOWN, \"\", 0, true, false, false, null,\n\t\t\t\tfalse, null, false, null, false, null, false, null, null, false,\n\t\t\t\tDatabaseFieldConfig.NO_MAX_FOREIGN_AUTO_REFRESH_LEVEL_SPECIFIED, 0));\n\t\tDatabaseTableConfig<DatabaseTableAnno> dbTableConf =\n\t\t\t\tnew DatabaseTableConfig<DatabaseTableAnno>(databaseType, DatabaseTableAnno.class, fieldConfigs);\n\t\tassertEquals(DatabaseTableAnno.class, dbTableConf.getDataClass());\n\t\tassertEquals(TABLE_NAME, dbTableConf.getTableName());\n\t\tdbTableConf.extractFieldTypes(connectionSource);\n\t\tFieldType[] fieldTypes = dbTableConf.getFieldTypes(databaseType);\n\t\tassertEquals(1, fieldTypes.length);\n\t\tassertEquals(\"stuff\", fieldTypes[0].getColumnName());\n\t}",
+    "prod_code_src": "\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+    "prod_code_tgt": "\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+    "test_id": 0,
+    "src_java_version": 8,
+    "src_maven_version": "3.9.6",
+    "tgt_java_version": 8,
+    "tgt_maven_version": "3.9.6",
+    "method_coverage_stats": {
+      "baseline_line_coverage": 0.6666666666666661,
+      "broken_line_coverage": null,
+      "repaired_line_coverage": 0.6666666666666661,
+      "baseline_branch_coverage": 0.5,
+      "broken_branch_coverage": null,
+      "repaired_branch_coverage": 0.5,
+      "baseline_mutation_coverage": 1.0,
+      "broken_mutation_coverage": null,
+      "repaired_mutation_coverage": 1.0
+    },
+    "a_focal_method_code": {
+      "startLine": 134,
+      "endLine": 142,
+      "code": "/**\n\t * Return the field types associated with this configuration.\n\t */\n\tpublic FieldType[] getFieldTypes(DatabaseType databaseType) throws SQLException {\n\t\tif (fieldTypes == null) {\n\t\t\tthrow new SQLException(\"Field types have not been extracted in table config\");\n\t\t}\n\t\treturn fieldTypes;\n\t}",
+      "fullName": "com.j256.ormlite.table.DatabaseTableConfig.getFieldTypes(DatabaseType)",
+      "simpleName": "getFieldTypes",
+      "className": "com.j256.ormlite.table.DatabaseTableConfig"
+    }
+  }
+]
