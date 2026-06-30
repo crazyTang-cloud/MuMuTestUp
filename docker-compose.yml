@@ -1,0 +1,11 @@
+services:
+  mumutestup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mumutestup:latest
+    working_dir: /data/david/project/mumutestup
+    volumes:
+      - ./:/data/david/project/mumutestup
+      - /data/david/java:/data/david/java:ro
+    tty: true

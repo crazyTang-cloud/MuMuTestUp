@@ -60,7 +60,7 @@ def run_beam_with_real_execution(sample_index: int = 0, dataset_path: str = None
     """
     # 1. Load dataset
     if dataset_path is None:
-        dataset_path = "/data/david/project/beam/dataset/dromara/hutool/data.json"
+        dataset_path = "/data/david/project/mumutestup/dataset/dromara/hutool/data.json"
     
     logger.info(f"Loading dataset from: {dataset_path}")
     
@@ -348,7 +348,7 @@ def run_beam_with_real_execution(sample_index: int = 0, dataset_path: str = None
     return result
 
 
-def find_all_data_json_files(dataset_root: str = "/data/david/project/beam/dataset") -> List[str]:
+def find_all_data_json_files(dataset_root: str = "/data/david/project/mumutestup/dataset") -> List[str]:
     """
     查找dataset目录下所有的data.json文件。
     
@@ -371,7 +371,7 @@ def find_all_data_json_files(dataset_root: str = "/data/david/project/beam/datas
 def get_project_name_from_path(dataset_path: str) -> str:
     """
     从dataset路径中提取项目名称。
-    例如: /data/david/project/beam/dataset/dromara/hutool/data.json -> dromara/hutool
+    例如: /data/david/project/mumutestup/dataset/dromara/hutool/data.json -> dromara/hutool
     
     Args:
         dataset_path: data.json文件的路径
@@ -386,7 +386,7 @@ def get_project_name_from_path(dataset_path: str) -> str:
     return f"{org}/{repo}"
 
 
-def process_single_project(project_name: str, dataset_root: str = "/data/david/project/beam/dataset", 
+def process_single_project(project_name: str, dataset_root: str = "/data/david/project/mumutestup/dataset", 
                           maven_repo_dir: str = None, start_index: int = 0, count: Optional[int] = None,
                           run_ablation: bool = False) -> Dict[str, Any]:
     """
@@ -550,7 +550,7 @@ def _process_project_worker(args):
         }
 
 
-def process_all_projects(dataset_root: str = "/data/david/project/beam/dataset", 
+def process_all_projects(dataset_root: str = "/data/david/project/mumutestup/dataset", 
                         maven_repo_dir: str = None, samples_per_project: Optional[int] = None,
                         run_ablation: bool = False, parallel: bool = True, max_workers: Optional[int] = None):
     """
@@ -1255,7 +1255,7 @@ def log_ablation_comparison(sample_id: str, extracted_results: Dict[str, Dict],
         project_name: Project name in format "org/repo" (e.g., "dromara/hutool")
     """
     # Create ablation comparison log directory with project structure
-    base_log_dir = Path("/data/david/project/beam/ablation_comparison_logs")
+    base_log_dir = Path("/data/david/project/mumutestup/ablation_comparison_logs")
     
     # If project_name provided, create org/repo subdirectories
     if project_name:
@@ -1551,7 +1551,7 @@ def run_with_ablation_study(run_func, *args, **kwargs):
     
     # Default dataset path if not provided
     if dataset_path is None:
-        dataset_path = "/data/david/project/beam/dataset/dromara/hutool/data.json"
+        dataset_path = "/data/david/project/mumutestup/dataset/dromara/hutool/data.json"
     
     # Load dataset to get real sample ID and project name
     try:
@@ -1692,7 +1692,7 @@ def main():
     elif choice == "6":
         # 处理指定项目的所有样本
         print("\n可用的项目:")
-        dataset_root = input("Enter dataset root path [/data/david/project/beam/dataset]: ").strip() or "/data/david/project/beam/dataset"
+        dataset_root = input("Enter dataset root path [/data/david/project/mumutestup/dataset]: ").strip() or "/data/david/project/mumutestup/dataset"
         data_json_files = find_all_data_json_files(dataset_root)
         
         if not data_json_files:
@@ -1732,7 +1732,7 @@ def main():
             sys.exit(1)
     elif choice == "7":
         # 处理所有项目
-        dataset_root = input("Enter dataset root path [/data/david/project/beam/dataset]: ").strip() or "/data/david/project/beam/dataset"
+        dataset_root = input("Enter dataset root path [/data/david/project/mumutestup/dataset]: ").strip() or "/data/david/project/mumutestup/dataset"
         samples_input = input("Enter max samples per project (press Enter for all samples): ").strip()
         samples_per_project = int(samples_input) if samples_input else None
         maven_repo = input("Enter Maven repository path (press Enter to use default): ").strip() or None
@@ -1762,7 +1762,7 @@ def main():
     elif choice == "8":
         # 处理多个特定项目
         print("\n可用的项目:")
-        dataset_root = input("Enter dataset root path [/data/david/project/beam/dataset]: ").strip() or "/data/david/project/beam/dataset"
+        dataset_root = input("Enter dataset root path [/data/david/project/mumutestup/dataset]: ").strip() or "/data/david/project/mumutestup/dataset"
         data_json_files = find_all_data_json_files(dataset_root)
         
         if not data_json_files:
