@@ -59,9 +59,9 @@ class JavaConfig:
     maven_home: str = "/data/david/maven/apache-maven-3.9.6"  # Default Maven path
     maven_repo_dir: Optional[str] = None  # Local Maven repository path (None = auto-generate per project)
     maven_repo_base: str = "/data/david/maven_repo"  # Base directory for Maven repositories
-    repos_dir: str = "/data/david/project/beam/repos"  # Where to clone repos
-    logs_base_dir: str = "/data/david/project/beam/logs"  # Base directory for logs (suffix will be added based on ablation)
-    reports_base_dir: str = "/data/david/project/beam/reports"  # Base directory for reports (suffix will be added based on ablation)
+    repos_dir: str = "/data/david/project/mumutestup/repos"  # Where to clone repos
+    logs_base_dir: str = "/data/david/project/mumutestup/logs"  # Base directory for logs (suffix will be added based on ablation)
+    reports_base_dir: str = "/data/david/project/mumutestup/reports"  # Base directory for reports (suffix will be added based on ablation)
     github_tokens: list = None  # List of GitHub tokens
     test_timeout: int = 6000  # Test execution timeout (seconds) - increased for mutation testing
     
@@ -75,8 +75,6 @@ class JavaConfig:
                 "21": "/data/david/java/jdk-21.0.1"
             }
         if self.github_tokens is None:
-            # Add your GitHub tokens here for better API rate limits
-            # Format: ["ghp_xxxxxxxxxxxxx", "ghp_yyyyyyyyyyyyy"]
             self.github_tokens = []
     
     def get_maven_repo_path(self, project_name: str = None) -> str:
@@ -114,7 +112,7 @@ class JavaConfig:
             framework_config: FrameworkConfig instance to get ablation suffix
             
         Returns:
-            Path to logs directory (e.g., /data/david/project/beam/logs_wo_mut)
+            Path to logs directory (e.g., /data/david/project/mumutestup/logs_wo_mut)
         """
         suffix = framework_config.get_ablation_suffix() if framework_config else ""
         return f"{self.logs_base_dir}{suffix}"
@@ -127,7 +125,7 @@ class JavaConfig:
             framework_config: FrameworkConfig instance to get ablation suffix
             
         Returns:
-            Path to reports directory (e.g., /data/david/project/beam/reports_wo_mut)
+            Path to reports directory (e.g., /data/david/project/mumutestup/reports_wo_mut)
         """
         suffix = framework_config.get_ablation_suffix() if framework_config else ""
         return f"{self.reports_base_dir}{suffix}"
@@ -163,7 +161,7 @@ class JavaConfig:
 @dataclass
 class FrameworkConfig:
     """Framework configuration"""
-    max_iterations: int = 4
+    max_iterations: int = 3
     max_retries: int = 3
     log_level: str = "INFO"
     log_file: Optional[str] = "beam.log"

@@ -39,6 +39,65 @@ pip install -r requirements.txt
 
 ---
 
+## Run with Docker
+
+The project also includes a Docker-based workflow that keeps the repository layout identical to the host machine.
+
+### Prerequisites
+
+- Docker installed and running
+- Your Java installations available on the host at `/data/david/java`
+- The dataset repositories cloned under `repos/`
+
+If your user cannot access Docker directly, either add it to the `docker` group or use `sudo` when running the helper script.
+
+### Build the image
+
+```bash
+docker build -t mumutestup .
+```
+
+### Run the framework
+
+Before running, edit the Docker helper if your local paths differ from the defaults:
+
+- `HOST_JAVA_DIR` in `docker-run.sh` should point to your local JDK directory (We need jdk 8,11,17,21)
+- `PROJECT_ROOT` in `docker-run.sh` should point to the MuMuTestUp project root on your machine
+
+These values are environment-variable based, so you can also override them at runtime:
+
+```bash
+HOST_JAVA_DIR=/your/java/path PROJECT_ROOT=/your/project/root ./docker-run.sh
+```
+
+Use the helper script from the project root:
+
+```bash
+./docker-run.sh
+```
+
+The script will:
+
+- mount the current project directory into the container
+- mount host JDKs from `HOST_JAVA_DIR`
+- keep logs, reports, and cloned repositories under the same paths as the host environment
+- pass LLM-related environment variables into the container
+
+If you prefer Docker Compose, you can also run:
+
+```bash
+docker compose up --build
+```
+
+### Notes
+
+- Logs will be written under paths such as `logs_rag_only_3rounds_w_prior/` in the project root, matching the non-Docker workflow.
+- The container uses the same project root path as the host: `/data/david/project/mumutestup`.
+- If you change the host JDK location, update `HOST_JAVA_DIR` accordingly.
+- If your project is cloned somewhere else, update `PROJECT_ROOT` accordingly.
+
+---
+
 ## Dataset
 
 Dataset files are located under `dataset/`, organized by organization and project:
